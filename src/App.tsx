@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,18 +7,21 @@ import {
 
 import HeaderApp from "./layout/HeaderApp";
 import MainApp from "./layout/MainApp";
-import Home from "./pages/Home";
-import Search from "./pages/Search";
-import MyList from "./pages/MyList";
+import Loading from "./components/Loading/Loading";
 
 import './styles/app.scss';
 import { NAVIGATION } from "./constants/constants";
 
+const Home = React.lazy(() => import('./pages/Home'));
+const Search = React.lazy(() => import('./pages/Search'));
+const MyList = React.lazy(() => import('./pages/MyList'));
+
 function App() {
   return (
     <div className="wrapper">
-        <Router>
-          <HeaderApp />
+      <Router>
+        <HeaderApp />
+        <Suspense fallback={<Loading />}>
           <MainApp>
               <Routes>
                 <Route path={NAVIGATION.HOME.path} element={<Home />} />
@@ -25,7 +29,8 @@ function App() {
                 <Route path={NAVIGATION.MY_LIST.path} element={<MyList />} />
               </Routes>
           </MainApp>
-        </Router>
+        </Suspense>
+      </Router>
     </div>
   );
 }
