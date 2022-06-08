@@ -29,6 +29,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    transform: translateY(var(--header-height));
     transition: all 0.75s ease;
 
     &.menu_hidden {
