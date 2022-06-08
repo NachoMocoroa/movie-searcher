@@ -3,7 +3,7 @@ export interface Message {
     text: string;
 };
 
-export interface MoviesResult {
+export interface MovieResult {
     adult: boolean;
     backdrop_path: string;
     genre_ids: Array<number>;
@@ -22,7 +22,7 @@ export interface MoviesResult {
 
 export interface MoviesInfoJSON {
     page: number;
-    results: Array<MoviesResult>;
+    results: Array<MovieResult>;
     total_pages: number;
     total_results: number;
 };

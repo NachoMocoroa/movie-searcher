@@ -1,9 +1,9 @@
-import { MoviesResult } from '../../../models/models';
+import { MovieResult } from '../../../models/models';
 import classes from './GalleryItem.module.scss';
 
 interface Props {
-  data: MoviesResult;
-  retrieveData: Function
+  data: MovieResult;
+  retrieveData: Function;
 }
 
 export default function GalleryItem({ data, retrieveData }: Props) {

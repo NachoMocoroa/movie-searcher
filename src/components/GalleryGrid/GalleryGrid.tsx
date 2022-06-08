@@ -1,14 +1,15 @@
 import GalleryItem from './GalleryItem/GalleryItem';
 import MessageCard from '../MessageCard/MessageCard';
 import classes from './GalleryGrid.module.scss';
-import { MoviesInfoJSON, MoviesResult } from '../../models/models';
+import { MoviesInfoJSON, MovieResult } from '../../models/models';
 import { TEXTS } from "../../constants/constants";
 
 interface Props {
-  data: MoviesInfoJSON
+  data: MoviesInfoJSON;
+  retrieveItem: Function;
 }
 
-export default function GalleryGrid({ data }: Props) {
+export default function GalleryGrid({ data, retrieveItem }: Props) {
   
   const { results } = data;
 
@@ -17,8 +18,8 @@ export default function GalleryGrid({ data }: Props) {
     text: TEXTS.NO_RESULTS.text
   };
 
-  const getData = (item: MoviesResult) => {
-    console.log('item: ', item);
+  const getData = (item: MovieResult) => {
+    retrieveItem(item);
   };
 
   return (
