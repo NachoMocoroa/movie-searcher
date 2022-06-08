@@ -1,0 +1,115 @@
+.header {
+  position: fixed;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--gray-dark);
+  padding: 0 10%;
+  z-index: 1;
+
+  .header_items {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-size: 2em;
+      color: var(--white);
+      font-weight: bold;
+    }
+  }
+
+  nav {
+    background-color: var(--gray-dark);
+    width: var(--nav-mobile-width);
+    height: calc(100vh - var(--header-height));
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 0.75s ease;
+
+    &.menu_hidden {
+      right: calc(-1 * var(--nav-mobile-width));
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin: 10px 0 0 0;
+      align-items: flex-end;
+      padding: 0 20px;
+
+      li {
+        margin: 10px 0;
+
+        &:first-of-type {
+          margin: 0 0 10px 0;
+        }
+
+        &:last-of-type {
+          margin: 10px 0 0 0;
+        }
+
+        a {
+          text-decoration: none;
+          font-size: 1.25em;
+          line-height: 1;
+          color: var(--link-color);
+
+          &:hover,
+          &:active,
+          &.active,
+          &.link-active {
+            color: var(--link-active);
+          }
+
+          &.link_active {
+            color: var(--link-active) !important;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 960px) {
+    .header_items {
+      width: 50%;
+    }
+    
+    nav {
+      background-color: transparent;
+      width: 100%;
+      height: auto;
+      position: unset;
+      transform: unset;
+      transition: unset;
+      right: unset !important;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: baseline;
+        flex-direction: row;
+
+        li {
+          margin: 0 0 0 2rem;
+
+          &:first-of-type {
+            margin: 0;
+          }
+
+          &:last-of-type {
+            margin: 0 0 0 2rem;
+          }
+        }
+      }
+    }
+  }
+}

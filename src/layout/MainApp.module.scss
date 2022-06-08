@@ -1,0 +1,25 @@
+.main_wrapper {
+  width: 100%;
+  padding: 0 2rem;
+
+  .main {
+    margin: var(--main-margin-top) auto 3rem auto;
+    width: 100%;
+    max-width: 100rem;
+  }
+
+  &.fadeIn {
+    animation: 1s fadeIn forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
