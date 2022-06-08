@@ -1,0 +1,7 @@
+const MOVIES = {
+    REQUEST_DATA: "REQUEST_DATA",
+    LOAD_SUCCESS: "LOAD_SUCCESS",
+    LOAD_ERROR: "LOAD_ERROR"
+};
+
+export default MOVIES;
