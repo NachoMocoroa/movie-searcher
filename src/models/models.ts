@@ -1,3 +1,8 @@
+export interface Message {
+    title: string;
+    text: string;
+};
+
 export interface MoviesResult {
     adult: boolean;
     backdrop_path: string;

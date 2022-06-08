@@ -1,0 +1,40 @@
+.error_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50vh;
+  margin: 0;
+  padding: 0;
+
+  .error_card {
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+    padding: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    .error_strip {
+      width: 100%;
+      padding: 5px 10px;
+      color: white;
+      background-color: var(--error-color);
+      font-size: 1.25em;
+      font-weight: 700;
+    }
+
+    .error_message {
+      padding: 20px 40px;
+
+      p {
+        font-weight: 400;
+        color: var(--gray-dark);
+  
+        span {
+          font-weight: 700;
+        }
+      }
+      
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.gallery_grid {
+  $image-size: 220px;
+  $gap-size: 1rem;
+  $breakpoints: ("small": 320px, "regular": 600px, "medium": 768px, "large": 1024px) !default;
+
+  position: relative;
+  display: grid;
+  grid-auto-rows: $image-size;
+  grid-gap: $gap-size;
+  grid-auto-flow: row dense;
+
+  @media all and (min-width: map-get($breakpoints, 'small')) {
+    $num-columns: 3;
+    grid-template-columns: repeat($num-columns, 1fr);
+  }
+
+  @media all and (min-width: map-get($breakpoints, 'regular')) {
+    $num-columns: 4;
+    grid-template-columns: repeat($num-columns, 1fr);
+  }
+
+  @media all and (min-width: map-get($breakpoints, 'medium')) {
+    $num-columns: 5;
+    grid-template-columns: repeat($num-columns, 1fr);
+  }
+
+  @media all and (min-width: map-get($breakpoints, 'large')) {
+    $num-columns: 6;
+    grid-template-columns: repeat($num-columns, 1fr);
+  }
+}

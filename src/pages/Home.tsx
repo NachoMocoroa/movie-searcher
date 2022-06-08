@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { requestMovies } from "../redux/action";
 import { MoviesData } from '../models/models';
-import { NAVIGATION } from "../constants/constants";
+import GalleryGrid from "../components/GalleryGrid/GalleryGrid";
+import Loading from "../components/Loading/Loading";
+import ErrorCard from "../components/ErrorCard/ErrorCard";
 
 export default function Home() {
   
-  const { moviesData } = useSelector((state: MoviesData) => state);
-  console.log('moviesData: ', moviesData);
+  const { moviesData, isLoading, isError, error } = useSelector((state: MoviesData) => state);
   
   const dispatch: AppDispatch = useDispatch();
 
@@ -22,7 +23,9 @@ export default function Home() {
 
   return (
     <section>
-      <h1>{NAVIGATION.HOME.text}</h1>
+      {isLoading && <Loading />}
+      {!isLoading && isError && <ErrorCard data={error} />}
+      {!isLoading && !isError && moviesData && <GalleryGrid data={moviesData} />}
     </section>
   );
 }
