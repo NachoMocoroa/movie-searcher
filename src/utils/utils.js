@@ -15,7 +15,7 @@ export const getCenterPosition = (elSelector) => {
         const Wheight = window.innerHeight;
 
         div.style.position = 'absolute';
-        div.style.top = ((Wheight - Mheight ) / 2 +window.pageYOffset ) + 'px';
-        div.style.left = ((Wwidth - Mwidth) / 2 +window.pageXOffset ) + 'px';
+        div.style.top = ((Wheight - Mheight ) / 2 + window.pageYOffset) + 'px';
+        div.style.left = ((Wwidth - Mwidth) / 2 + window.pageXOffset) + 'px';
     }
 };

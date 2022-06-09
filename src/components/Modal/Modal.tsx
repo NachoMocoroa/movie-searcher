@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import { checkWindowOverflow } from '../../utils/utils';
+import { checkWindowOverflow, getCenterPosition } from '../../utils/utils';
 import classes from './Modal.module.scss';
 
 interface Props {
@@ -19,6 +19,9 @@ export default function Modal({ isModalOpen, setModalState, textTitle, childrenB
 
   useEffect(() => {
     checkWindowOverflow(isModalOpen);
+    if (isModalOpen) {
+      getCenterPosition('.' + classes.modal);
+    }
   }, [isModalOpen]);
 
 

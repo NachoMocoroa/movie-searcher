@@ -21,3 +21,8 @@ body.overflow-hidden {
     color: var(--white);
     text-align: center;
 }
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
