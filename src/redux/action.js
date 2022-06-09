@@ -65,3 +65,10 @@ export const saveMovieList = content => ({
         content
     }
 });
+
+export const updateMovieList = content => ({
+    type: MOVIES.UPDATE_MOVIELIST,
+    payload: {
+        content
+    }
+});

@@ -1,11 +1,12 @@
 import useForm from '../../../hooks/useForm';
+import { MovieFormParams } from '../../../models/models';
 import classes from './MovieForm.module.scss';
 
 interface Props {
   submitForm: Function;
 };
 
-const initialForm = {
+const initialForm: MovieFormParams = {
   punctuation: '',
   comments: ''
 };

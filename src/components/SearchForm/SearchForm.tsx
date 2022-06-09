@@ -1,39 +1,37 @@
-import { SetStateAction, useState } from 'react';
+import useForm from '../../hooks/useForm';
 import classes from './SearchForm.module.scss';
 
 interface Props {
-  search: Function;
+  submitSearch: Function;
 }
 
-const emptyString: string = '';
+const initialForm: any = {
+  search: ''
+};
 
-export default function SearchForm({ search }: Props) {
+export default function SearchForm({ submitSearch }: Props) {
 
-  const [searchValue, setSearchValue] = useState(emptyString);
+  const [formData, handleSearchInputChanges, reset] = useForm(initialForm);
 
-  const handleSearchInputChanges = (e: { target: { value: SetStateAction<string>; }; }) => {
-    setSearchValue(e.target.value);
-  };
+  const { search } = formData;
 
-  const resetInputField = () => {
-    setSearchValue(emptyString);
-  };
-
-  const callSearchFunction = (e: { preventDefault: () => void; }) => {
+  const callSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    search(searchValue);
-    resetInputField();
+    submitSearch(formData.search);
+    reset();
   };
 
   return (
     <div className={classes.search_form}>
       <form>
-        <input
-          value={searchValue}
-          onChange={handleSearchInputChanges}
-          type="text"
+        <input 
+          type="text" 
+          id="search" 
+          name="search" 
+          value={search}
+          onChange={handleSearchInputChanges} 
         />
-        <input onClick={callSearchFunction} type="submit" value="search" />
+        <input onClick={callSubmit} type="submit" value="Search" />
       </form>
     </div>
   );

@@ -1,3 +1,8 @@
+export interface MovieFormParams {
+    punctuation: string;
+    comments: string;
+};
+
 export interface Message {
     title: string;
     text: string;
@@ -21,6 +26,7 @@ export interface MovieResult {
 };
 
 export interface MovieList {
+    id?: string;
     movie: MovieResult;
     punctuation: string;
     comments: string;

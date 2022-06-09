@@ -1,7 +1,8 @@
-import { saveMovieList } from '../../redux/action';
-import { useDispatch } from 'react-redux';
+import { saveMovieList, updateMovieList } from '../../redux/action';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
-import { MovieResult, MovieList } from '../../models/models';
+import { MovieResult, MovieList, MovieFormParams, MoviesData } from '../../models/models';
+import { cloneObject, copyObject, updateObjectInArrayByProp } from '../../utils/utils';
 import classes from './MovieInfo.module.scss';
 import MovieForm from './MovieForm/MovieForm';
 
@@ -23,6 +24,8 @@ export default function MovieInfo({ data, setModalState }: Props) {
     vote_count, 
     overview 
   } = data;
+
+  const { moviesList } = useSelector((state: MoviesData) => state);
   const dispatch: AppDispatch = useDispatch();
 
   const getPoster = () => {
@@ -30,14 +33,42 @@ export default function MovieInfo({ data, setModalState }: Props) {
     return poster_path ? `${imgUrlPrefix}${poster_path}` : './images/no-image.png';
   };
 
-  const setMovieList = (param: any) => {
-    const movieFormObj: MovieList = {
+  const getMovieListObject = (data: MovieResult, param: MovieFormParams) => {
+    return {
       movie: data,
       punctuation: param.punctuation,
       comments: param.comments,
     };
-    dispatch(saveMovieList(movieFormObj));
+  };
+
+  const setMovieListItem = (param: MovieFormParams) => {
+    dispatch(saveMovieList(param));
     setModalState(false);
+  };
+
+  const updateMovieInList = (objIndex: number, params: MovieFormParams) => {
+    const moviesListCloned = cloneObject(moviesList);
+    const movieUpdated = copyObject(moviesListCloned[objIndex], params);
+    return updateObjectInArrayByProp(moviesListCloned, movieUpdated, 'id');
+  };
+
+  const setMoviesList = (objExists: number, param: MovieFormParams) => {
+    const newMoviesList = updateMovieInList(objExists, param);
+    dispatch(updateMovieList(newMoviesList));
+    setModalState(false);
+  };
+
+  const movieExists = (param: MovieResult) => {
+    return moviesList.findIndex((item: MovieList) => item.movie.id === param.id);
+  };
+
+  const checkMovieList = (param: MovieFormParams) => {
+    const objExists: number = movieExists(data);
+    if (objExists === -1) {
+      setMovieListItem(getMovieListObject(data, param));
+    } else {
+      setMoviesList(objExists, param);
+    }
   };
 
   return (
@@ -66,7 +97,7 @@ export default function MovieInfo({ data, setModalState }: Props) {
           </div>
         </div>
       </div>
-      <MovieForm submitForm={setMovieList} />
+      <MovieForm submitForm={checkMovieList} />
     </div>
   );
 }

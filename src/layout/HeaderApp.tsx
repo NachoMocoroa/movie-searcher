@@ -46,7 +46,7 @@ export default function HeaderApp() {
           <li>
             <NavLink to={NAVIGATION.MY_LIST.path} className={({ isActive }) => isActive ? linkActiveClassName : undefined}>
               {NAVIGATION.MY_LIST.text}
-              <span className={classes.badge}>{moviesList.length}</span>
+              {(moviesList && <span className={classes.badge}>{moviesList.length}</span>)}
             </NavLink>
           </li>
         </ul>

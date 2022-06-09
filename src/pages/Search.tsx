@@ -58,7 +58,8 @@ export default function Search() {
   return (
     <section>
       <h2 className="section-text-header">Search movies</h2>
-      <SearchForm search={setSearch} />
+      <p className="section-text-header">Type on the search box what you want to search and click the "Search" button.</p>
+      <SearchForm submitSearch={setSearch} />
       <div>
         {isLoading && <Loading />}
         {!isLoading && isError && <ErrorCard data={error} />}
