@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import classes from './MainApp.module.scss';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function MainApp({ children }: Props) {

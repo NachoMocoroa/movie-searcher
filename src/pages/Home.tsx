@@ -7,20 +7,55 @@ import GalleryGrid from "../components/GalleryGrid/GalleryGrid";
 import Loading from "../components/Loading/Loading";
 import ErrorCard from "../components/ErrorCard/ErrorCard";
 import Modal from "../components/Modal/Modal";
+import MovieInfo from "../components/MovieInfo/MovieInfo";
+
+const movieDefault = {
+  adult: false,
+  backdrop_path: '',
+  genre_ids: [],
+  id: 0,
+  original_language: '',
+  original_title: '',
+  overview: '',
+  popularity: 0,
+  poster_path: '',
+  release_date: '',
+  title: '',
+  video: false,
+  vote_average: 0,
+  vote_count: 0
+};
 
 export default function Home() {
   
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [movieInformation, setMovieInformation] = useState<MovieResult>(movieDefault);
   const { moviesData, isLoading, isError, error } = useSelector((state: MoviesData) => state);
   const dispatch: AppDispatch = useDispatch();
 
   const setModalInfo = (data: MovieResult) => {
     console.log('data: ', data);
     setModalOpen(!modalOpen);
+    setMovieInformation(data);
   };
 
   const setModalVisiblity = (value: boolean) => {
     setModalOpen(value);
+  };
+
+  const getMovieInfo = (info: any) => {
+    console.log('info: ', info);
+  };
+
+  const getMovieChildren = () => {
+    if (movieInformation) {
+      return (<MovieInfo 
+        data={movieInformation} 
+        retrieveData={getMovieInfo}
+      />);
+    } else {
+      return null;
+    }
   };
 
   const initFetch = useCallback(() => {
@@ -38,7 +73,12 @@ export default function Home() {
       {!isLoading && !isError && moviesData && (
         <>
           <GalleryGrid data={moviesData} retrieveItem={setModalInfo} />
-          <Modal isModalOpen={modalOpen} setModalState={setModalVisiblity} />
+          <Modal 
+            isModalOpen={modalOpen} 
+            setModalState={setModalVisiblity} 
+            textTitle="Movie info" 
+            childrenBody={getMovieChildren()} 
+          />
         </>
       )}
     </section>
