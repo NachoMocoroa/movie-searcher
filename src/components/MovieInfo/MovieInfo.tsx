@@ -1,11 +1,16 @@
-import { MovieResult } from '../../models/models';
+import { saveMovieList } from '../../redux/action';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../redux/store';
+import { MovieResult, MovieList } from '../../models/models';
 import classes from './MovieInfo.module.scss';
+import MovieForm from './MovieForm/MovieForm';
 
 interface Props {
   data: MovieResult;
+  setModalState: Function;
 }
 
-export default function MovieInfo({ data }: Props) {
+export default function MovieInfo({ data, setModalState }: Props) {
   
   const { 
     poster_path, 
@@ -18,10 +23,21 @@ export default function MovieInfo({ data }: Props) {
     vote_count, 
     overview 
   } = data;
+  const dispatch: AppDispatch = useDispatch();
 
   const getPoster = () => {
     const imgUrlPrefix = 'https://www.themoviedb.org/t/p/w220_and_h330_face/';
     return poster_path ? `${imgUrlPrefix}${poster_path}` : './images/no-image.png';
+  };
+
+  const setMovieList = (param: any) => {
+    const movieFormObj: MovieList = {
+      movie: data,
+      punctuation: param.punctuation,
+      comments: param.comments,
+    };
+    dispatch(saveMovieList(movieFormObj));
+    setModalState(false);
   };
 
   return (
@@ -50,6 +66,7 @@ export default function MovieInfo({ data }: Props) {
           </div>
         </div>
       </div>
+      <MovieForm submitForm={setMovieList} />
     </div>
   );
 }

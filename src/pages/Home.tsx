@@ -34,7 +34,6 @@ export default function Home() {
   const dispatch: AppDispatch = useDispatch();
 
   const setModalInfo = (data: MovieResult) => {
-    console.log('data: ', data);
     setModalOpen(!modalOpen);
     setMovieInformation(data);
   };
@@ -45,7 +44,7 @@ export default function Home() {
 
   const getMovieChildren = () => {
     if (movieInformation) {
-      return (<MovieInfo data={movieInformation} />);
+      return (<MovieInfo data={movieInformation} setModalState={setModalVisiblity} />);
     } else {
       return null;
     }

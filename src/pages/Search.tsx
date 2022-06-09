@@ -49,7 +49,7 @@ export default function Search() {
 
   const getMovieChildren = () => {
     if (movieInformation) {
-      return (<MovieInfo data={movieInformation} />);
+      return (<MovieInfo data={movieInformation}  setModalState={setModalVisiblity} />);
     } else {
       return null;
     }

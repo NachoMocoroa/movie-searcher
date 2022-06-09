@@ -3,6 +3,7 @@ import MOVIES from "./constants";
 const initalState = {
     moviesData: [],
     moviesSearch: [],
+    moviesList: [],
     isLoading: false,
     isError: false,
     error: null
@@ -38,11 +39,8 @@ const reducer = (state = initalState, action) => {
                 isError: false
             };
         case MOVIES.SEARCH_SUCCESS: {
-            /* const { content } = action.payload;
-            content.id = `search-${state.moviesSearch.length + 1}`; */
             return {
                 ...state,
-                //moviesSearch: [...state.moviesSearch, content],
                 moviesSearch: action.moviesSearch,
                 isLoading: false,
                 isError: false,
@@ -56,6 +54,14 @@ const reducer = (state = initalState, action) => {
                 isError: true,
                 error: action.error
             };
+        case MOVIES.SAVE_MOVIE: {
+            const { content } = action.payload;
+            content.id = `movie-${state.moviesList.length + 1}`;
+            return {
+                ...state,
+                moviesList: [...state.moviesList, content],
+            };
+        }
         default:
             return state;
     }

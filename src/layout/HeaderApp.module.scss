@@ -72,6 +72,21 @@
           &.link_active {
             color: var(--link-active) !important;
           }
+  
+          .badge {
+            background-color: var(--badge-bg-color);
+            color: var(--white);
+            margin-left: 0.5rem;
+            border-radius: 50%;
+            padding: 0;
+            font-size: 0.85rem;
+            width: 23px;
+            height: 23px;
+            line-height: 1.2;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+          }
         }
       }
     }
@@ -108,6 +123,13 @@
 
           &:last-of-type {
             margin: 0 0 0 2rem;
+          }
+
+          a {
+            .badge {
+              font-size: 1.3rem;
+              line-height: 1;
+            }
           }
         }
       }

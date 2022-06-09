@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import classes from "./HeaderApp.module.scss";
+import { MoviesData } from "../models/models";
+import { NAVIGATION, TEXTS } from "../constants/constants";
 import TopButton from "../components/TopButton/TopButton";
 import MenuButton from "../components/MenuButton/MenuButton";
-import classes from "./HeaderApp.module.scss";
-import { NAVIGATION, TEXTS } from "../constants/constants";
 
 export default function HeaderApp() {
 
@@ -12,6 +14,7 @@ export default function HeaderApp() {
   const linkActiveClassName = classes.link_active;
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [isMenuClicked, setIsMenuClicked] = useState(false);
+  const { moviesList } = useSelector((state: MoviesData) => state);
   
   const handleScroll = () => {
     let posPageY = window.pageYOffset;
@@ -43,6 +46,7 @@ export default function HeaderApp() {
           <li>
             <NavLink to={NAVIGATION.MY_LIST.path} className={({ isActive }) => isActive ? linkActiveClassName : undefined}>
               {NAVIGATION.MY_LIST.text}
+              <span className={classes.badge}>{moviesList.length}</span>
             </NavLink>
           </li>
         </ul>

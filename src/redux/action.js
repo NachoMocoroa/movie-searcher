@@ -46,11 +46,22 @@ export const searchMovies = (query) => async (dispatch) => {
         });
     } catch (e) {
         console.log('e: ', e);
+        const err = { 
+            status_code: e.response.status, 
+            status_message: e.message 
+        };
         dispatch({
             type: MOVIES.SEARCH_ERROR,
             moviesSearch: [],
             isError: true,
-            error: e.response.data
+            error: err
         });
     }
 };
+
+export const saveMovieList = content => ({
+    type: MOVIES.SAVE_MOVIE,
+    payload: {
+        content
+    }
+});
