@@ -43,16 +43,9 @@ export default function Home() {
     setModalOpen(value);
   };
 
-  const getMovieInfo = (info: any) => {
-    console.log('info: ', info);
-  };
-
   const getMovieChildren = () => {
     if (movieInformation) {
-      return (<MovieInfo 
-        data={movieInformation} 
-        retrieveData={getMovieInfo}
-      />);
+      return (<MovieInfo data={movieInformation} />);
     } else {
       return null;
     }
@@ -72,6 +65,7 @@ export default function Home() {
       {!isLoading && isError && <ErrorCard data={error} />}
       {!isLoading && !isError && moviesData && (
         <>
+          <h2 className="section-text-header">The most popular</h2>
           <GalleryGrid data={moviesData} retrieveItem={setModalInfo} />
           <Modal 
             isModalOpen={modalOpen} 

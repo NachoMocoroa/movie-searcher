@@ -20,6 +20,13 @@ export interface MovieResult {
     vote_count: number;
 };
 
+export interface MoviesSearchJSON {
+    page?: number;
+    results: Array<MovieResult>;
+    total_pages?: number;
+    total_results?: number;
+};
+
 export interface MoviesInfoJSON {
     page: number;
     results: Array<MovieResult>;
@@ -35,6 +42,7 @@ export interface MoviesErrorJSON {
 
 export interface MoviesData {
     moviesData: MoviesInfoJSON,
+    moviesSearch: MoviesSearchJSON;
     isLoading: boolean,
     isError: boolean,
     error: MoviesErrorJSON,

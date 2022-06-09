@@ -3,10 +3,9 @@ import classes from './MovieInfo.module.scss';
 
 interface Props {
   data: MovieResult;
-  retrieveData: Function;
 }
 
-export default function MovieInfo({ data, retrieveData }: Props) {
+export default function MovieInfo({ data }: Props) {
   
   const { 
     poster_path, 
@@ -26,10 +25,7 @@ export default function MovieInfo({ data, retrieveData }: Props) {
   };
 
   return (
-    <div 
-      className={classes.movie_info} 
-      onClick={() => retrieveData(data)} 
-    >
+    <div className={classes.movie_info}>
       <div className={classes.movie_info_wrapper}>
         <div className={classes.movie_info__image}>
           <img src={getPoster()} alt={title} />

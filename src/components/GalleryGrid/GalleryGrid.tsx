@@ -1,11 +1,11 @@
 import GalleryItem from './GalleryItem/GalleryItem';
 import MessageCard from '../MessageCard/MessageCard';
 import classes from './GalleryGrid.module.scss';
-import { MoviesInfoJSON, MovieResult } from '../../models/models';
+import { MoviesInfoJSON, MovieResult, MoviesSearchJSON } from '../../models/models';
 import { TEXTS } from "../../constants/constants";
 
 interface Props {
-  data: MoviesInfoJSON;
+  data: MoviesInfoJSON | MoviesSearchJSON;
   retrieveItem: Function;
 }
 
