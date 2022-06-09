@@ -4,6 +4,8 @@ import { AppDispatch } from '../../redux/store';
 import { MovieResult, MovieList, MovieFormParams, MoviesData } from '../../models/models';
 import { cloneObject, copyObject, updateObjectInArrayByProp } from '../../utils/utils';
 import classes from './MovieInfo.module.scss';
+import { TEXTS } from '../../constants/constants';
+
 import MovieForm from './MovieForm/MovieForm';
 
 interface Props {
@@ -81,18 +83,18 @@ export default function MovieInfo({ data, setModalState }: Props) {
           <p className={classes.text_title}>{title}</p>
           <div className={classes.movie_info__data_box}>
             <div className={classes.movie_info__data_box_items}>
-              <p><span>Original title: </span>{original_title}</p>
-              <p><span>Original language: </span>{original_language}</p>
-              <p><span>Release date: </span>{release_date}</p>
+              <p><span>{TEXTS.MOVIE.original_title}</span>{original_title}</p>
+              <p><span>{TEXTS.MOVIE.original_language}</span>{original_language}</p>
+              <p><span>{TEXTS.MOVIE.release_date}</span>{release_date}</p>
             </div>
             <div className={classes.movie_info__data_box_items}>
-              <p><span>Popularity: </span>{popularity}</p>
-              <p><span>Vote average: </span>{vote_average}</p>
-              <p><span>Vote count: </span>{vote_count}</p>
+              <p><span>{TEXTS.MOVIE.popularity}</span>{popularity}</p>
+              <p><span>{TEXTS.MOVIE.vote_average}</span>{vote_average}</p>
+              <p><span>{TEXTS.MOVIE.vote_count}</span>{vote_count}</p>
             </div>
           </div>
           <div className={classes.overview_wrapper}>
-            <span>Overview:</span>
+            <span>{TEXTS.MOVIE.overview}</span>
             <p className={classes.text_overview}>{overview}</p>
           </div>
         </div>

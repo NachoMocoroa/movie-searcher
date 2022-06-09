@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import classes from "./HeaderApp.module.scss";
 import { MoviesData } from "../models/models";
+import classes from "./HeaderApp.module.scss";
 import { NAVIGATION, TEXTS } from "../constants/constants";
+
 import TopButton from "../components/TopButton/TopButton";
 import MenuButton from "../components/MenuButton/MenuButton";
 

@@ -1,5 +1,6 @@
 import useForm from '../../hooks/useForm';
 import classes from './SearchForm.module.scss';
+import { TEXTS } from '../../constants/constants';
 
 interface Props {
   submitSearch: Function;
@@ -31,7 +32,7 @@ export default function SearchForm({ submitSearch }: Props) {
           value={search}
           onChange={handleSearchInputChanges} 
         />
-        <input onClick={callSubmit} type="submit" value="Search" />
+        <input onClick={callSubmit} type="submit" value={TEXTS.FORMS.SEARCH.button} />
       </form>
     </div>
   );

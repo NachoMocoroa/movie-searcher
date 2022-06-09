@@ -1,5 +1,6 @@
 //import { MovieResult } from '../../../models/models';
 import classes from './MoviesListItem.module.scss';
+import { TEXTS } from '../../../constants/constants';
 
 interface Props {
   data: any;
@@ -30,7 +31,7 @@ export default function MoviesListItem({ data, retrieveData }: Props) {
           <p>{release_date}</p>
         </div>
         <div className={classes.label_text}>
-          <span>Comments</span>
+          <span>{TEXTS.COMMENTS.text}</span>
           <p className={classes.comments_text}>{comments}</p>
         </div>
       </div>

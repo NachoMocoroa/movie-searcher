@@ -1,6 +1,7 @@
 import useForm from '../../../hooks/useForm';
 import { MovieFormParams } from '../../../models/models';
 import classes from './MovieForm.module.scss';
+import { TEXTS } from '../../../constants/constants';
 
 interface Props {
   submitForm: Function;
@@ -28,7 +29,7 @@ export default function MovieForm({ submitForm }: Props) {
       <form>
         <div className={classes.movie_form__fields}>
           <fieldset>
-            <label htmlFor="punctuation">Punctuation</label>
+            <label htmlFor="punctuation">{TEXTS.FORMS.MOVIE.punctuation}</label>
             <input 
               type="number" 
               id="punctuation" 
@@ -40,7 +41,7 @@ export default function MovieForm({ submitForm }: Props) {
             />
           </fieldset>
           <fieldset>
-            <label htmlFor="comments">Comments</label>
+            <label htmlFor="comments">{TEXTS.FORMS.MOVIE.comments}</label>
             <textarea 
               rows={5} 
               id="comments" 
@@ -51,7 +52,7 @@ export default function MovieForm({ submitForm }: Props) {
           </fieldset>
         </div>
         <div className={classes.movie_form__submit}>
-          <input onClick={callSubmit} type="submit" value="Submit" />
+          <input onClick={callSubmit} type="submit" value={TEXTS.FORMS.MOVIE.submit} />
         </div>
       </form>
     </div>

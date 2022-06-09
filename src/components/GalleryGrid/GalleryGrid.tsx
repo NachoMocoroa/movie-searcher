@@ -1,7 +1,7 @@
 import GalleryItem from './GalleryItem/GalleryItem';
 import MessageCard from '../MessageCard/MessageCard';
-import classes from './GalleryGrid.module.scss';
 import { MoviesInfoJSON, MovieResult, MoviesSearchJSON } from '../../models/models';
+import classes from './GalleryGrid.module.scss';
 import { TEXTS } from "../../constants/constants";
 
 interface Props {
