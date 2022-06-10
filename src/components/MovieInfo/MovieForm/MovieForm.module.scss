@@ -52,9 +52,26 @@
     .movie_form__submit {
       display: flex;
       flex-direction: row;
-      justify-content: flex-end;
       width: 100%;
       margin: 1rem 0 0 0;
+
+      &.one_button {
+        justify-content: flex-end;
+      }
+
+      &.two_buttons {
+        justify-content: space-between;
+      }
+
+      .delete_btn {
+        padding: 0.5rem 2rem;
+        background-color: var(--badge-bg-color);
+        color: var(--white);
+        font-size: 17px;
+        border: 1px solid var(--badge-bg-color);
+        outline: none;
+        cursor: pointer;
+      }
 
       input[type=submit] {
         padding: 0.5rem 2rem;

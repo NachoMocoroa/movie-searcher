@@ -11,9 +11,10 @@ import MovieForm from './MovieForm/MovieForm';
 interface Props {
   data: MovieResult | any;
   setModalState: Function;
+  canDelete?: boolean;
 }
 
-export default function MovieInfo({ data, setModalState }: Props) {
+export default function MovieInfo({ data, setModalState, canDelete }: Props) {
   
   const { 
     poster_path, 
@@ -73,6 +74,17 @@ export default function MovieInfo({ data, setModalState }: Props) {
     }
   };
 
+  const deleteMovieItemFromList = () => {
+    const moviesListCloned = cloneObject(moviesList);
+    return moviesListCloned.filter((item: MovieList) => item.movie.id !== data.id);
+  };
+
+  const onDeleteClick = () => {
+    const newMoviesList = deleteMovieItemFromList();
+    dispatch(updateMovieList(newMoviesList));
+    setModalState(false);
+  };
+
   return (
     <div className={classes.movie_info}>
       <div className={classes.movie_info_wrapper}>
@@ -99,7 +111,11 @@ export default function MovieInfo({ data, setModalState }: Props) {
           </div>
         </div>
       </div>
-      <MovieForm submitForm={checkMovieList} />
+      <MovieForm 
+        deleteButton={canDelete} 
+        actionDelete={onDeleteClick} 
+        submitForm={checkMovieList} 
+      />
     </div>
   );
 }

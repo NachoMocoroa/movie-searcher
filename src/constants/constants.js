@@ -47,7 +47,8 @@ const TEXTS = {
         MOVIE: {
             punctuation: "Punctuation",
             comments: "Comments",
-            submit: "Submit"
+            submit: "Submit",
+            delete: "Delete Movie"
         }
     },
     MOVIE: {

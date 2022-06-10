@@ -26,7 +26,13 @@ export default function MyList() {
 
   const getMovieChildren = () => {
     if (movieInformation) {
-      return (<MovieInfo data={movieInformation} setModalState={setModalVisiblity} />);
+      return (
+        <MovieInfo 
+          data={movieInformation} 
+          setModalState={setModalVisiblity} 
+          canDelete={true} 
+        />
+      );
     } else {
       return null;
     }

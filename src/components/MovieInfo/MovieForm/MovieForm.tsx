@@ -4,6 +4,8 @@ import classes from './MovieForm.module.scss';
 import { TEXTS } from '../../../constants/constants';
 
 interface Props {
+  deleteButton?: boolean;
+  actionDelete?: Function;
   submitForm: Function;
 };
 
@@ -12,7 +14,10 @@ const initialForm: MovieFormParams = {
   comments: ''
 };
 
-export default function MovieForm({ submitForm }: Props) {
+const punctuationValue = 'punctuation';
+const commentsValue = 'comments';
+
+export default function MovieForm({ deleteButton, actionDelete, submitForm }: Props) {
 
   const [formData, handleInputChange, reset] = useForm(initialForm);
 
@@ -24,16 +29,25 @@ export default function MovieForm({ submitForm }: Props) {
     reset();
   };
 
+  const onDelete = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    actionDelete && actionDelete();
+  };
+
+  const getButtonsAlignment = () => {
+    return deleteButton ? `${classes.two_buttons}`: `${classes.one_button}`;
+  };
+
   return (
     <div className={classes.movie_form}>
       <form>
         <div className={classes.movie_form__fields}>
           <fieldset>
-            <label htmlFor="punctuation">{TEXTS.FORMS.MOVIE.punctuation}</label>
+            <label htmlFor={punctuationValue}>{TEXTS.FORMS.MOVIE.punctuation}</label>
             <input 
               type="number" 
-              id="punctuation" 
-              name="punctuation" 
+              id={punctuationValue} 
+              name={punctuationValue} 
               min={0} 
               max={5} 
               value={punctuation}
@@ -41,17 +55,23 @@ export default function MovieForm({ submitForm }: Props) {
             />
           </fieldset>
           <fieldset>
-            <label htmlFor="comments">{TEXTS.FORMS.MOVIE.comments}</label>
+            <label htmlFor={commentsValue}>{TEXTS.FORMS.MOVIE.comments}</label>
             <textarea 
               rows={5} 
-              id="comments" 
-              name="comments" 
+              id={commentsValue} 
+              name={commentsValue} 
               value={comments}
               onChange={ handleInputChange }
             ></textarea>
           </fieldset>
         </div>
-        <div className={classes.movie_form__submit}>
+        <div className={`${classes.movie_form__submit} ${getButtonsAlignment()}`}>
+          {deleteButton && 
+            <button 
+              className={classes.delete_btn}
+              onClick={(e) => onDelete(e)}
+            >{TEXTS.FORMS.MOVIE.delete}</button>
+          }
           <input onClick={callSubmit} type="submit" value={TEXTS.FORMS.MOVIE.submit} />
         </div>
       </form>
