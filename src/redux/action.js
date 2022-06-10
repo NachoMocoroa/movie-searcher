@@ -29,7 +29,6 @@ export const requestMovies = () => async (dispatch) => {
 };
 
 export const searchMovies = (query) => async (dispatch) => {
-    console.log('query: ', query);
 
     const request = `${API_URL}3/search/movie?&query=${query}&api_key=${KEY}`;
     
@@ -38,14 +37,12 @@ export const searchMovies = (query) => async (dispatch) => {
     });
     try {
         const json = await axios.get(request);
-        console.log('json: ', json);
         dispatch({
             type: MOVIES.SEARCH_SUCCESS,
             moviesSearch: json.data,
             isError: false
         });
     } catch (e) {
-        console.log('e: ', e);
         const err = { 
             status_code: e.response.status, 
             status_message: e.message 
