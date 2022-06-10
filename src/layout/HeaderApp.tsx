@@ -33,7 +33,9 @@ export default function HeaderApp() {
     <header className={classes.header}>
       <TopButton showTopBtn={showTopBtn} />
       <div className={classes.header_items}>
-        <div className={classes.logo}>{TEXTS.LOGO.text}</div>
+        <NavLink to={NAVIGATION.HOME.path}>
+          <div className={classes.logo}>{TEXTS.LOGO.text}</div>
+        </NavLink>
         <MenuButton menuClicked={setIsMenuClicked} isMenuOpen={isMenuClicked} />
       </div>
       <nav className={`${isMenuClicked ? '' : classes.menu_hidden}`}>

@@ -9,7 +9,7 @@ import { TEXTS } from '../../constants/constants';
 import MovieForm from './MovieForm/MovieForm';
 
 interface Props {
-  data: MovieResult;
+  data: MovieResult | any;
   setModalState: Function;
 }
 
@@ -54,7 +54,7 @@ export default function MovieInfo({ data, setModalState }: Props) {
     return updateObjectInArrayByProp(moviesListCloned, movieUpdated, 'id');
   };
 
-  const setMoviesList = (objExists: number, param: MovieFormParams) => {
+  const updateItemInMoviesList = (objExists: number, param: MovieFormParams) => {
     const newMoviesList = updateMovieInList(objExists, param);
     dispatch(updateMovieList(newMoviesList));
     setModalState(false);
@@ -69,7 +69,7 @@ export default function MovieInfo({ data, setModalState }: Props) {
     if (objExists === -1) {
       setMovieListItem(getMovieListObject(data, param));
     } else {
-      setMoviesList(objExists, param);
+      updateItemInMoviesList(objExists, param);
     }
   };
 

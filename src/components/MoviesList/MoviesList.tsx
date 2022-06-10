@@ -10,7 +10,6 @@ interface Props {
 }
 
 export default function MoviesList({ data, retrieveItem }: Props) {
-  console.log('data: ', data);
 
   const dataMessage = {
     title: TEXTS.NO_RESULTS.title,

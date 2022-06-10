@@ -83,4 +83,11 @@ const movieDefault = {
     vote_count: 0
 };
 
-export { NAVIGATION, TEXTS, movieDefault };
+const MovieListDefault = {
+    id: '',
+    movie: movieDefault,
+    punctuation: '',
+    comments: ''
+};
+
+export { NAVIGATION, TEXTS, movieDefault, MovieListDefault };
