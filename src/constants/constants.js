@@ -36,7 +36,7 @@ const TEXTS = {
             modal_title: "Movie info"
         },
         MY_LIST: {
-            title: "My List",
+            title: "My MoviesList",
             text: "Here is your Movies list that you previously selected, click on the cards to edit or to delete the movie selected."
         }
     },
