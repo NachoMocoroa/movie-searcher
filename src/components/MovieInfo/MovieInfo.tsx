@@ -1,5 +1,5 @@
-import { saveMovieList, updateMovieList } from '../../redux/action';
 import { useDispatch, useSelector } from 'react-redux';
+import { saveMovieList, updateMovieList } from "../../redux/actions/data";
 import { AppDispatch } from '../../redux/store';
 import { MovieResult, MovieList, MovieFormParams, MoviesData } from '../../models/models';
 import { cloneObject, copyObject, updateObjectInArrayByProp } from '../../utils/utils';
@@ -28,7 +28,7 @@ export default function MovieInfo({ data, setModalState, canDelete }: Props) {
     overview 
   } = data;
 
-  const { moviesList } = useSelector((state: MoviesData) => state);
+  const { moviesList } = useSelector((state: MoviesData) => state.moviesList);
   const dispatch: AppDispatch = useDispatch();
 
   const getPoster = () => {

@@ -15,7 +15,7 @@ export default function HeaderApp() {
   const linkActiveClassName = classes.link_active;
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [isMenuClicked, setIsMenuClicked] = useState(false);
-  const { moviesList } = useSelector((state: MoviesData) => state);
+  const { moviesList } = useSelector((state: MoviesData) => state.moviesList);
   
   const handleScroll = () => {
     let posPageY = window.pageYOffset;

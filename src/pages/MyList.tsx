@@ -13,8 +13,8 @@ export default function MyList() {
   
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [movieInformation, setMovieInformation] = useState<MovieResult>(movieDefault);
-  const { moviesList, isLoading, isError, error } = useSelector((state: MoviesData) => state);
-
+  const { moviesList, isLoading, isError, error } = useSelector((state: MoviesData) => state.moviesList);
+  
   const setModalInfo = (data: MovieList) => {
     setModalOpen(!modalOpen);
     setMovieInformation(data.movie);

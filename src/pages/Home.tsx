@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { AppDispatch } from "../redux/store";
-import { requestMovies } from "../redux/action";
+import { AppDispatch } from '../redux/store';
+import { requestMovies } from "../redux/actions/data";
 import { MoviesData, MovieResult } from '../models/models';
 import { movieDefault, TEXTS } from "../constants/constants";
 
@@ -15,7 +15,7 @@ export default function Home() {
   
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [movieInformation, setMovieInformation] = useState<MovieResult>(movieDefault);
-  const { moviesData, isLoading, isError, error } = useSelector((state: MoviesData) => state);
+  const { movies, isLoading, isError, error } = useSelector((state: MoviesData) => state.movies);
   const dispatch: AppDispatch = useDispatch();
 
   const setModalInfo = (data: MovieResult) => {
@@ -47,10 +47,10 @@ export default function Home() {
     <section>
       {isLoading && <Loading />}
       {!isLoading && isError && <ErrorCard data={error} />}
-      {!isLoading && !isError && moviesData && (
+      {!isLoading && !isError && movies && (
         <>
           <h2 className="section-text-header">{TEXTS.SECTIONS.HOME.title}</h2>
-          <GalleryGrid data={moviesData} retrieveItem={setModalInfo} />
+          <GalleryGrid data={movies} retrieveItem={setModalInfo} />
           <Modal 
             isModalOpen={modalOpen} 
             setModalState={setModalVisiblity} 

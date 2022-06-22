@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../redux/store";
-import { searchMovies } from "../redux/action";
+import { searchMovies } from "../redux/actions/data";
 import { MovieResult, MoviesData } from "../models/models";
 import { movieDefault, TEXTS } from "../constants/constants";
 
@@ -16,7 +16,7 @@ export default function Search() {
   
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [movieInformation, setMovieInformation] = useState<MovieResult>(movieDefault);
-  const { moviesSearch, isLoading, isError, error } = useSelector((state: MoviesData) => state);
+  const { searches, isLoading, isError, error } = useSelector((state: MoviesData) => state.searches);
   const dispatch: AppDispatch = useDispatch();
 
   const setModalInfo = (data: MovieResult) => {
@@ -48,9 +48,9 @@ export default function Search() {
       <div>
         {isLoading && <Loading />}
         {!isLoading && isError && <ErrorCard data={error} />}
-        {!isLoading && !isError && moviesSearch && (
+        {!isLoading && !isError && searches && (
           <>
-            <GalleryGrid data={moviesSearch} retrieveItem={setModalInfo} />
+            <GalleryGrid data={searches} retrieveItem={setModalInfo} />
             <Modal 
               isModalOpen={modalOpen} 
               setModalState={setModalVisiblity} 

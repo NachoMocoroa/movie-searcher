@@ -52,10 +52,31 @@ export interface MoviesErrorJSON {
     success: boolean;
 };
 
+export interface MoviesJson {
+    movies: MoviesInfoJSON,
+    isLoading: boolean,
+    isError: boolean,
+    error: MoviesErrorJSON,
+};
+
+export interface SearchesJson {
+    searches: MoviesInfoJSON,
+    isLoading: boolean,
+    isError: boolean,
+    error: MoviesErrorJSON,
+};
+
+export interface MoviesListJson {
+    moviesList: Array<MovieList>,
+    isLoading: boolean,
+    isError: boolean,
+    error: MoviesErrorJSON,
+};
+
 export interface MoviesData {
-    moviesData: MoviesInfoJSON,
-    moviesSearch: MoviesSearchJSON;
-    moviesList: Array<MovieList>;
+    movies: MoviesJson,
+    searches: SearchesJson;
+    moviesList: MoviesListJson;
     isLoading: boolean,
     isError: boolean,
     error: MoviesErrorJSON,
