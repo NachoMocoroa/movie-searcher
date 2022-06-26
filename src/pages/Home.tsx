@@ -1,15 +1,16 @@
-import { useEffect, useCallback, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useCallback, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
-import { requestMovies } from "../redux/actions/data";
+import { requestMovies } from '../redux/actions/data';
 import { MoviesData, MovieResult } from '../models/models';
-import { movieDefault, TEXTS } from "../constants/constants";
+import { movieDefault, TEXTS } from '../constants/constants';
 
-import GalleryGrid from "../components/GalleryGrid/GalleryGrid";
-import Loading from "../components/Loading/Loading";
-import ErrorCard from "../components/ErrorCard/ErrorCard";
-import Modal from "../components/Modal/Modal";
-import MovieInfo from "../components/MovieInfo/MovieInfo";
+import Typography from '@mui/material/Typography';
+import GalleryGrid from '../components/GalleryGrid/GalleryGrid';
+import Loading from '../components/Loading/Loading';
+import ErrorCard from '../components/ErrorCard/ErrorCard';
+import Modal from '../components/Modal/Modal';
+import MovieInfo from '../components/MovieInfo/MovieInfo';
 
 export default function Home() {
   
@@ -49,7 +50,13 @@ export default function Home() {
       {!isLoading && isError && <ErrorCard data={error} />}
       {!isLoading && !isError && movies && (
         <>
-          <h2 className="section-text-header">{TEXTS.SECTIONS.HOME.title}</h2>
+          <Typography 
+            variant="h2" 
+            align="center" 
+            sx={{ color: '#FFFFFF', margin: '0 0 1em 0' }}
+          >
+            {TEXTS.SECTIONS.HOME.title}
+          </Typography>
           <GalleryGrid data={movies} retrieveItem={setModalInfo} />
           <Modal 
             isModalOpen={modalOpen} 

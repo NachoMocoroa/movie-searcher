@@ -1,24 +1,54 @@
-import { MoviesErrorJSON } from '../../models/models';
-import classes from './ErrorCard.module.scss';
-import { TEXTS } from '../../constants/constants';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 interface Props {
-  data: MoviesErrorJSON
+  data: string
 }
+
+const ErrorCardItem = (() => ({
+  width: '100%',
+  minWidth: 150,
+  maxWidth: 350,
+  margin: '0 auto',
+}));
+
+const ErrorCardWrapper = (() => ({
+  width: '100%',
+  margin: '0',
+  padding: '0',
+}));
+
+const ErrorCardTitle = (() => ({
+  width: '100%',
+  margin: '0',
+  padding: '1rem 1rem 0.5rem 1rem',
+  fontSize: '1.5rem',
+  fontWeight: '700',
+  color: '#ffffff',
+  backgroundColor: '#CC2062',
+}));
+
+const ErrorCardText = (() => ({
+  width: '100%',
+  margin: '0',
+  padding: '1rem',
+  fontSize: '1.25rem',
+  color: '#3333333',
+}));
 
 export default function ErrorCard({ data }: Props) {
   
-  const { status_code, status_message } = data;
-  
   return (
-    <div className={classes.error_wrapper}>
-      <div className={classes.error_card}>
-        <div className={classes.error_strip}>{TEXTS.ERROR.status_code}</div>
-        <div className={classes.error_message}>
-          <p><span>{TEXTS.ERROR.status_code}</span> {status_code}</p>
-          <p><span>{TEXTS.ERROR.message}</span> {status_message}</p>
-        </div>
-      </div>
-    </div>
+    <Card sx={ErrorCardItem}>
+      <CardContent sx={ErrorCardWrapper}>
+        <Typography sx={ErrorCardTitle} color="text.secondary" gutterBottom>
+          ERROR
+        </Typography>
+        <Typography sx={ErrorCardText} variant="body2">
+          {data}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 }

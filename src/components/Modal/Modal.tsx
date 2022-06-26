@@ -1,6 +1,8 @@
-import { ReactNode, useEffect } from 'react';
-import { checkWindowOverflow, getCenterPosition } from '../../utils/utils';
-import classes from './Modal.module.scss';
+import { ReactNode } from 'react';
+
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 
 interface Props {
   isModalOpen: boolean;
@@ -9,33 +11,32 @@ interface Props {
   childrenBody: ReactNode;
 }
 
+const ModalWrapper = (() => ({
+  '& .MuiDialogTitle-root': {
+    padding: '2rem 2.5rem 1rem 2.5rem',
+    fontWeight: '500',
+    fontSize: '2.5rem',
+    lineHeight: '1.6',
+    color: '#333333',
+  },
+}));
+
 export default function Modal({ isModalOpen, setModalState, textTitle, childrenBody }: Props) {
 
-  const classModalVisibility = isModalOpen ? classes.modal_visible : classes.modal_hidden;
-
-  const toggleModal = () => {
+  const handleClose = () => {
     setModalState(!isModalOpen);
   };
 
-  useEffect(() => {
-    checkWindowOverflow(isModalOpen);
-    if (isModalOpen) {
-      getCenterPosition('.' + classes.modal);
-    }
-  }, [isModalOpen]);
-
-
   return (
-    <div className={`${classes.overlay} ${classModalVisibility}`}>
-      <div className={classes.modal}>
-        <div className={classes.modal_header}>
-          <h4 className={classes.modal_header__title}>{textTitle}</h4>
-          <button className={classes.close_btn} onClick={() => toggleModal()}></button>
-        </div>
-        <div className={classes.modal_body}>
-          {childrenBody}
-        </div>
-      </div>
-    </div>
+    <Dialog 
+      sx={ModalWrapper} 
+      open={isModalOpen} 
+      onClose={handleClose}
+    >
+      <DialogTitle>{textTitle}</DialogTitle>
+      <DialogContent>
+        {childrenBody}
+      </DialogContent>
+    </Dialog>
   );
 }

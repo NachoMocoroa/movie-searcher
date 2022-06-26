@@ -1,16 +1,17 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../redux/store";
-import { searchMovies } from "../redux/actions/data";
-import { MovieResult, MoviesData } from "../models/models";
-import { movieDefault, TEXTS } from "../constants/constants";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../redux/store';
+import { searchMovies } from '../redux/actions/data';
+import { MovieResult, MoviesData } from '../models/models';
+import { movieDefault, TEXTS } from '../constants/constants';
 
-import SearchForm from "../components/SearchForm/SearchForm";
-import GalleryGrid from "../components/GalleryGrid/GalleryGrid";
-import Loading from "../components/Loading/Loading";
-import ErrorCard from "../components/ErrorCard/ErrorCard";
-import Modal from "../components/Modal/Modal";
-import MovieInfo from "../components/MovieInfo/MovieInfo";
+import Typography from '@mui/material/Typography';
+import SearchForm from '../components/SearchForm/SearchForm';
+import GalleryGrid from '../components/GalleryGrid/GalleryGrid';
+import Loading from '../components/Loading/Loading';
+import ErrorCard from '../components/ErrorCard/ErrorCard';
+import Modal from '../components/Modal/Modal';
+import MovieInfo from '../components/MovieInfo/MovieInfo';
 
 export default function Search() {
   
@@ -42,8 +43,19 @@ export default function Search() {
   
   return (
     <section>
-      <h2 className="section-text-header">{TEXTS.SECTIONS.SEARCH.title}</h2>
-      <p className="section-text-header">{TEXTS.SECTIONS.SEARCH.text}</p>
+      <Typography 
+        variant="h2" 
+        align="center" 
+        sx={{ color: '#FFFFFF', margin: '0 0 1rem 0' }}
+      >
+        {TEXTS.SECTIONS.SEARCH.title}
+      </Typography>
+      <Typography 
+        align="center" 
+        sx={{ color: '#FFFFFF', margin: '0 0 1em 0', fontSize: '1.6rem' }}
+      >
+        {TEXTS.SECTIONS.SEARCH.text}
+      </Typography>
       <SearchForm submitSearch={setSearch} />
       <div>
         {isLoading && <Loading />}

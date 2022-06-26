@@ -8,6 +8,7 @@ const initialState = {
 };
 
 const moviesReducer = (state = initialState, action) => {
+  
   const { type } = action;
 
   switch (type) {

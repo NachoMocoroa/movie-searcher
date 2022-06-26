@@ -46,31 +46,25 @@ export interface MoviesInfoJSON {
     total_results: number;
 };
 
-export interface MoviesErrorJSON {
-    status_code: number;
-    status_message: string;
-    success: boolean;
-};
-
 export interface MoviesJson {
     movies: MoviesInfoJSON,
     isLoading: boolean,
     isError: boolean,
-    error: MoviesErrorJSON,
+    error: string,
 };
 
 export interface SearchesJson {
     searches: MoviesInfoJSON,
     isLoading: boolean,
     isError: boolean,
-    error: MoviesErrorJSON,
+    error: string,
 };
 
 export interface MoviesListJson {
     moviesList: Array<MovieList>,
     isLoading: boolean,
     isError: boolean,
-    error: MoviesErrorJSON,
+    error: string,
 };
 
 export interface MoviesData {
@@ -79,5 +73,5 @@ export interface MoviesData {
     moviesList: MoviesListJson;
     isLoading: boolean,
     isError: boolean,
-    error: MoviesErrorJSON,
+    error: string,
 };

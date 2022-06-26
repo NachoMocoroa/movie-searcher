@@ -1,11 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { saveMovieList, updateMovieList } from "../../redux/actions/data";
+import { saveMovieList, updateMovieList } from '../../redux/actions/data';
 import { AppDispatch } from '../../redux/store';
 import { MovieResult, MovieList, MovieFormParams, MoviesData } from '../../models/models';
 import { cloneObject, copyObject, updateObjectInArrayByProp } from '../../utils/utils';
-import classes from './MovieInfo.module.scss';
 import { TEXTS } from '../../constants/constants';
 
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import MovieForm from './MovieForm/MovieForm';
 
 interface Props {
@@ -13,6 +17,76 @@ interface Props {
   setModalState: Function;
   canDelete?: boolean;
 }
+
+const DisplayColumn = (() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '0',
+  padding: '0',
+}));
+
+const DisplayRow = (() => ({
+  display: 'flex',
+  flexDirection: 'row',
+  margin: '0',
+  padding: '0',
+}));
+
+const CardWrapper = (() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  margin: '0',
+  padding: '0',
+  boxShadow: 'unset',
+}));
+
+const CardContentWrapper = (() => ({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  width: '100%',
+}));
+
+const CardTitle = (() => ({
+  width: '100%',
+  margin: '0',
+  padding: '1rem 1rem 0.5rem 1rem',
+  fontSize: '1.5rem',
+  fontWeight: '700',
+  color: '#ffffff',
+  backgroundColor: '#666666',
+}));
+
+const InfoText = (() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '0.5rem 0',
+  padding: '0 1rem',
+  '& .MuiTypography-root': {
+    fontSize: '1.25rem',
+    color: '#3333333',
+    '& span': {
+      marginRight: '0.5rem',
+      fontWeight: '700',
+    },
+  },
+}));
+
+const InfoTextComment = (() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '0.5rem 0',
+  padding: '0 1rem',
+  '& .MuiTypography-root': {
+    fontSize: '1.25rem',
+    color: '#3333333',
+    maxHeight: '100px',
+    overflowX: 'hidden',
+    overflowY: 'auto',
+  },
+}));
 
 export default function MovieInfo({ data, setModalState, canDelete }: Props) {
   
@@ -86,36 +160,42 @@ export default function MovieInfo({ data, setModalState, canDelete }: Props) {
   };
 
   return (
-    <div className={classes.movie_info}>
-      <div className={classes.movie_info_wrapper}>
-        <div className={classes.movie_info__image}>
-          <img src={getPoster()} alt={title} />
-        </div>
-        <div className={classes.movie_info__data}>
-          <p className={classes.text_title}>{title}</p>
-          <div className={classes.movie_info__data_box}>
-            <div className={classes.movie_info__data_box_items}>
-              <p><span>{TEXTS.MOVIE.original_title}</span>{original_title}</p>
-              <p><span>{TEXTS.MOVIE.original_language}</span>{original_language}</p>
-              <p><span>{TEXTS.MOVIE.release_date}</span>{release_date}</p>
-            </div>
-            <div className={classes.movie_info__data_box_items}>
-              <p><span>{TEXTS.MOVIE.popularity}</span>{popularity}</p>
-              <p><span>{TEXTS.MOVIE.vote_average}</span>{vote_average}</p>
-              <p><span>{TEXTS.MOVIE.vote_count}</span>{vote_count}</p>
-            </div>
-          </div>
-          <div className={classes.overview_wrapper}>
-            <span>{TEXTS.MOVIE.overview}</span>
-            <p className={classes.text_overview}>{overview}</p>
-          </div>
-        </div>
-      </div>
-      <MovieForm 
-        deleteButton={canDelete} 
-        actionDelete={onDeleteClick} 
-        submitForm={checkMovieList} 
-      />
-    </div>
+    <Card sx={CardWrapper}>
+      <Box sx={CardContentWrapper}>
+        <CardMedia
+          component="img"
+          height="200"
+          image={getPoster()}
+          alt={title}
+        />
+        <CardContent sx={DisplayColumn}>
+          <Typography sx={CardTitle} gutterBottom>
+            {title}
+          </Typography>
+          <Box sx={DisplayRow}>
+            <Box sx={InfoText}>
+              <Typography><span>{TEXTS.MOVIE.original_title}</span>{original_title}</Typography>
+              <Typography><span>{TEXTS.MOVIE.original_language}</span>{original_language}</Typography>
+              <Typography><span>{TEXTS.MOVIE.release_date}</span>{release_date}</Typography>
+            </Box>
+            <Box sx={InfoText}>
+              <Typography><span>{TEXTS.MOVIE.popularity}</span>{popularity}</Typography>
+              <Typography><span>{TEXTS.MOVIE.vote_average}</span>{vote_average}</Typography>
+              <Typography><span>{TEXTS.MOVIE.vote_count}</span>{vote_count}</Typography>
+            </Box>
+          </Box>
+          <Box sx={InfoTextComment}>
+            <Typography>{overview}</Typography>
+          </Box>
+        </CardContent>
+      </Box>
+      <Box sx={CardContentWrapper}>
+        <MovieForm 
+          deleteButton={canDelete} 
+          actionDelete={onDeleteClick} 
+          submitForm={checkMovieList} 
+        />
+      </Box>
+    </Card>
   );
 }

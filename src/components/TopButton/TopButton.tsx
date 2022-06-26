@@ -1,12 +1,33 @@
-import classes from './TopButton.module.scss';
+import IconButton from '@mui/material/IconButton';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 interface Props {
   showTopBtn: boolean
 }
 
-export default function TopButton({ showTopBtn }: Props) {
+const topButtonStyles = (() => ({
+  position: 'fixed',
+  bottom: '20px',
+  right: '20px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingTop: '7px',
+  height: '40px',
+  width: '40px',
+  borderRadius: '50%',
+  border: 'none',
+  boxShadow: '0 0 10px rgb(0 0 0 / 5%)',
+  backgroundColor: 'rgba(255, 255, 255, 0.25)',
+  color: '#FFFFFF',
+  zIndex: 1,
+  transition: 'opacity .3s, visibility .3s, background-color .3s',
+  '&:hover': {
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+  },
+}));
 
-  const topBtnVisibleClass = showTopBtn ? classes.top_button_visible : '';
+export default function TopButton({ showTopBtn }: Props) {
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -16,9 +37,16 @@ export default function TopButton({ showTopBtn }: Props) {
   };
 
   return (
-    <button 
-      onClick={() => scrollToTop()} 
-      className={`${classes.top_button} ${topBtnVisibleClass}`}
-    ></button>
+    <IconButton 
+      type="button" 
+      sx={topButtonStyles} 
+      style={{
+        visibility: showTopBtn ? 'visible' : 'hidden',
+        opacity: showTopBtn ? 1 : 0
+      }} 
+      onClick={() => scrollToTop()}
+    >
+      <ExpandLessIcon sx={{ fontSize: 30 }} />
+    </IconButton>
   );
 }

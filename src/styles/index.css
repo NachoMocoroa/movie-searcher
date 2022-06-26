@@ -49,6 +49,17 @@ p, a {
   font-size: 1em;
 }
 
+#root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+}
+
 @media screen and (min-width: 600px) {
   body {
     font-size: 16px;

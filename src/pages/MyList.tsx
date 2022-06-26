@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { MovieList, MovieResult, MoviesData } from "../models/models";
-import { movieDefault, TEXTS } from "../constants/constants";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { MovieList, MovieResult, MoviesData } from '../models/models';
+import { movieDefault, TEXTS } from '../constants/constants';
 
-import MoviesList from "../components/MoviesList/MoviesList";
-import ErrorCard from "../components/ErrorCard/ErrorCard";
-import Loading from "../components/Loading/Loading";
-import Modal from "../components/Modal/Modal";
-import MovieInfo from "../components/MovieInfo/MovieInfo";
+import Typography from '@mui/material/Typography';
+import MoviesList from '../components/MoviesList/MoviesList';
+import ErrorCard from '../components/ErrorCard/ErrorCard';
+import Loading from '../components/Loading/Loading';
+import Modal from '../components/Modal/Modal';
+import MovieInfo from '../components/MovieInfo/MovieInfo';
 
 export default function MyList() {
   
@@ -40,8 +41,19 @@ export default function MyList() {
   
   return (
     <section>
-      <h2 className="section-text-header">{TEXTS.SECTIONS.MY_LIST.title}</h2>
-      <p className="section-text-header">{TEXTS.SECTIONS.MY_LIST.text}</p>
+      <Typography 
+        variant="h2" 
+        align="center" 
+        sx={{ color: '#FFFFFF', margin: '0 0 1rem 0' }}
+      >
+        {TEXTS.SECTIONS.MY_LIST.title}
+      </Typography>
+      <Typography 
+        align="center" 
+        sx={{ color: '#FFFFFF', margin: '0 0 1em 0', fontSize: '1.6rem' }}
+      >
+        {TEXTS.SECTIONS.MY_LIST.text}
+      </Typography>
       <div>
         {isLoading && <Loading />}
         {!isLoading && isError && <ErrorCard data={error} />}
