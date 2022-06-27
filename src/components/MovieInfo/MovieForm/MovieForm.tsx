@@ -1,5 +1,14 @@
 import useForm from '../../../hooks/useForm';
 import { MovieFormParams } from '../../../models/models';
+import { 
+  DisplayColumn, 
+  FieldssRow, 
+  FieldColumn, 
+  FieldColumnNumber, 
+  NumberFieldStyle, 
+  TextareaStyle, 
+  ButtonsRow 
+} from "./MovieFormStyles";
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -12,88 +21,6 @@ interface Props {
   actionDelete?: Function;
   submitForm: Function;
 };
-
-const DisplayColumn = (() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  margin: '0',
-  padding: '0',
-}));
-
-const FieldssRow = (() => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'flex-start',
-  width: '100%',
-  margin: '0 0 1rem 0',
-  padding: '0',
-  '& .MuiTypography-root': {
-    color: '#666666', 
-    margin: '0 0 5px 0', 
-    fontSize: '1.25rem'
-  },
-}));
-
-const FieldColumn = (() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '0',
-  padding: '0',
-  width: '100%',
-}));
-
-const FieldColumnNumber = (() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '0',
-  padding: '0 1.5rem 0 0',
-  width: '100%',
-  maxWidth: '150px',
-}));
-
-const NumberFieldStyle = (() => ({
-  width: '100%',
-  maxWidth: '100px',
-  '& .MuiInputBase-root': {
-    '& input': {
-      padding: '1.5rem 10px 1.5rem 1rem',
-      textAlign: 'center',
-      fontSize: '1.15rem',
-    },
-    '& .MuiOutlinedInput-notchedOutline': {
-      '& legend': {
-        fontSize: '1.5rem',
-      },
-    },
-  },
-}));
-
-const TextareaStyle = (() => ({
-  width: '100%',
-  maxWidth: { xs: 275, sm: 375, md: 425 }, 
-  '& .MuiInputBase-root.MuiInputBase-multiline': {
-    width: '100%',
-    padding: '0',
-    '& textarea': {
-      width: '100%',
-      padding: '1.5rem 10px 1.5rem 1rem',
-      fontSize: '1.15rem',
-    },
-  },
-}));
-
-const ButtonsRow = (() => ({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  alignItems: 'flex-end',
-  width: '100%',
-  margin: '1rem 0 0 0',
-  padding: '0',
-  '& .MuiButton-root': {
-    fontSize: '1.35rem !important',
-  },
-}));
 
 const initialForm: MovieFormParams = {
   punctuation: '',

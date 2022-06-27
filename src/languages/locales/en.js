@@ -5,7 +5,7 @@ export default {
     "navigation-list": "My List",
     "header-home": "The most popular",
     "header-search": "Search movies",
-    "paragraph-search": "Type on the search box what you want to search and click the \"Search\" button.",
+    "paragraph-search": "Type on the search box what you want to search and click the 'Search' button.",
     "placeholder-search": "Search",
     "header-list": "My MoviesList",
     "paragraph-list": "Here is your Movies list that you previously selected, click on the cards to edit or to delete the movie selected.",

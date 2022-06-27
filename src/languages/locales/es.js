@@ -5,7 +5,7 @@ export default {
     "navigation-list": "Mi Lista",
     "header-home": "Más populares",
     "header-search": "Buscar películas",
-    "paragraph-search": "Escribe en la caja de búsqueda la palabra que quieras y pulsa el botón \'Buscar\'.",
+    "paragraph-search": "Escribe en la caja de búsqueda la palabra que quieras y pulsa el botón 'Buscar'.",
     "placeholder-search": "Buscar",
     "header-list": "Mi ListaDePelis",
     "paragraph-list": "Aquí está el listado de películas que previamente seleccionaste, pulsa en la ficha para editar o borrar la película seleccionada.",

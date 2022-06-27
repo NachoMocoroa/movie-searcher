@@ -3,6 +3,15 @@ import { saveMovieList, updateMovieList } from '../../redux/actions/data';
 import { AppDispatch } from '../../redux/store';
 import { MovieResult, MovieList, MovieFormParams, MoviesData } from '../../models/models';
 import { cloneObject, copyObject, updateObjectInArrayByProp } from '../../utils/utils';
+import { 
+  DisplayColumn, 
+  DisplayRow, 
+  CardWrapper, 
+  CardContentWrapper, 
+  CardTitle, 
+  InfoText, 
+  InfoTextComment 
+} from "./MovieInfoStyles";
 
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -17,76 +26,6 @@ interface Props {
   setModalState: Function;
   canDelete?: boolean;
 }
-
-const DisplayColumn = (() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '0',
-  padding: '0',
-}));
-
-const DisplayRow = (() => ({
-  display: 'flex',
-  flexDirection: 'row',
-  margin: '0',
-  padding: '0',
-}));
-
-const CardWrapper = (() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  margin: '0',
-  padding: '0',
-  boxShadow: 'unset',
-}));
-
-const CardContentWrapper = (() => ({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'flex-start',
-  width: '100%',
-}));
-
-const CardTitle = (() => ({
-  width: '100%',
-  margin: '0',
-  padding: '1rem 1rem 0.5rem 1rem',
-  fontSize: '1.5rem',
-  fontWeight: '700',
-  color: '#ffffff',
-  backgroundColor: '#666666',
-}));
-
-const InfoText = (() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '0.5rem 0',
-  padding: '0 1rem',
-  '& .MuiTypography-root': {
-    fontSize: '1.25rem',
-    color: '#3333333',
-    '& span': {
-      marginRight: '0.5rem',
-      fontWeight: '700',
-    },
-  },
-}));
-
-const InfoTextComment = (() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '0.5rem 0',
-  padding: '0 1rem',
-  '& .MuiTypography-root': {
-    fontSize: '1.25rem',
-    color: '#3333333',
-    maxHeight: '100px',
-    overflowX: 'hidden',
-    overflowY: 'auto',
-  },
-}));
 
 export default function MovieInfo({ data, setModalState, canDelete }: Props) {
   

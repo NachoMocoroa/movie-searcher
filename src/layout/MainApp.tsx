@@ -3,17 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import Fade from '@mui/material/Fade';
 import Box from '@mui/material/Box';
-
-const mainMarginTop = '6rem';
-
-const mainBox = (() => ({
-  width: '100%',
-  maxWidth: '100rem',
-  height: '100%',
-  minHeight: `calc(100vh - (${mainMarginTop} + 3rem))`,
-  margin: `${mainMarginTop} auto 3rem auto`,
-  padding: '0 2rem',
-}));
+import { MainBox } from './layoutStyles';
 
 interface Props {
   children: ReactNode;
@@ -37,7 +27,7 @@ export default function MainApp({ children }: Props) {
     >
       <Box
         component="main" 
-        sx={mainBox} 
+        sx={MainBox} 
         aria-label="main"
       >{children}</Box>
     </Fade>

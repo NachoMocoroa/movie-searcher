@@ -70,7 +70,7 @@ function LanguageSelector() {
 		>
 			{langs.map((lang) => (
 				<MenuItem key={lang.value} value={lang.value}>
-					<img width="20" src={lang.flag} />
+					<img width="20" src={lang.flag} alt={lang.label} />
 				</MenuItem>
 			))}
 		</Select>
