@@ -3,7 +3,6 @@ import { saveMovieList, updateMovieList } from '../../redux/actions/data';
 import { AppDispatch } from '../../redux/store';
 import { MovieResult, MovieList, MovieFormParams, MoviesData } from '../../models/models';
 import { cloneObject, copyObject, updateObjectInArrayByProp } from '../../utils/utils';
-import { TEXTS } from '../../constants/constants';
 
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,6 +10,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import MovieForm from './MovieForm/MovieForm';
+import { Translation } from '../../languages/components/Translation';
 
 interface Props {
   data: MovieResult | any;
@@ -174,14 +174,44 @@ export default function MovieInfo({ data, setModalState, canDelete }: Props) {
           </Typography>
           <Box sx={DisplayRow}>
             <Box sx={InfoText}>
-              <Typography><span>{TEXTS.MOVIE.original_title}</span>{original_title}</Typography>
-              <Typography><span>{TEXTS.MOVIE.original_language}</span>{original_language}</Typography>
-              <Typography><span>{TEXTS.MOVIE.release_date}</span>{release_date}</Typography>
+              <Typography>
+                <span>
+                  <Translation>info-original_title</Translation>
+                </span>
+                {original_title}
+              </Typography>
+              <Typography>
+                <span>
+                  <Translation>info-original_language</Translation>
+                </span>
+                {original_language}
+              </Typography>
+              <Typography>
+                <span>
+                  <Translation>info-release_date</Translation>
+                </span>
+                {release_date}
+              </Typography>
             </Box>
             <Box sx={InfoText}>
-              <Typography><span>{TEXTS.MOVIE.popularity}</span>{popularity}</Typography>
-              <Typography><span>{TEXTS.MOVIE.vote_average}</span>{vote_average}</Typography>
-              <Typography><span>{TEXTS.MOVIE.vote_count}</span>{vote_count}</Typography>
+              <Typography>
+                <span>
+                  <Translation>info-popularity</Translation>
+                </span>
+                {popularity}
+              </Typography>
+              <Typography>
+                <span>
+                  <Translation>info-vote_average</Translation>
+                </span>
+                {vote_average}
+              </Typography>
+              <Typography>
+                <span>
+                  <Translation>info-vote_count</Translation>
+                </span>
+                {vote_count}
+              </Typography>
             </Box>
           </Box>
           <Box sx={InfoTextComment}>

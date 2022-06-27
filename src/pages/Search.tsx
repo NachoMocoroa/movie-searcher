@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { searchMovies } from '../redux/actions/data';
 import { MovieResult, MoviesData } from '../models/models';
-import { movieDefault, TEXTS } from '../constants/constants';
+import { movieDefault } from '../constants/constants';
 
 import Typography from '@mui/material/Typography';
 import SearchForm from '../components/SearchForm/SearchForm';
@@ -12,6 +12,7 @@ import Loading from '../components/Loading/Loading';
 import ErrorCard from '../components/ErrorCard/ErrorCard';
 import Modal from '../components/Modal/Modal';
 import MovieInfo from '../components/MovieInfo/MovieInfo';
+import { Translation } from '../languages/components/Translation';
 
 export default function Search() {
   
@@ -48,13 +49,13 @@ export default function Search() {
         align="center" 
         sx={{ color: '#FFFFFF', margin: '0 0 1rem 0' }}
       >
-        {TEXTS.SECTIONS.SEARCH.title}
+        <Translation>header-search</Translation>
       </Typography>
       <Typography 
         align="center" 
         sx={{ color: '#FFFFFF', margin: '0 0 1em 0', fontSize: '1.6rem' }}
       >
-        {TEXTS.SECTIONS.SEARCH.text}
+        <Translation>paragraph-search</Translation>
       </Typography>
       <SearchForm submitSearch={setSearch} />
       <div>
@@ -66,7 +67,6 @@ export default function Search() {
             <Modal 
               isModalOpen={modalOpen} 
               setModalState={setModalVisiblity} 
-              textTitle={TEXTS.SECTIONS.SEARCH.modal_title} 
               childrenBody={getMovieChildren()} 
             />
           </>

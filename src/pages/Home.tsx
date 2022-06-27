@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { requestMovies } from '../redux/actions/data';
 import { MoviesData, MovieResult } from '../models/models';
-import { movieDefault, TEXTS } from '../constants/constants';
+import { movieDefault } from '../constants/constants';
 
 import Typography from '@mui/material/Typography';
 import GalleryGrid from '../components/GalleryGrid/GalleryGrid';
@@ -11,6 +11,7 @@ import Loading from '../components/Loading/Loading';
 import ErrorCard from '../components/ErrorCard/ErrorCard';
 import Modal from '../components/Modal/Modal';
 import MovieInfo from '../components/MovieInfo/MovieInfo';
+import { Translation } from '../languages/components/Translation';
 
 export default function Home() {
   
@@ -55,13 +56,12 @@ export default function Home() {
             align="center" 
             sx={{ color: '#FFFFFF', margin: '0 0 1em 0' }}
           >
-            {TEXTS.SECTIONS.HOME.title}
+            <Translation>header-home</Translation>
           </Typography>
           <GalleryGrid data={movies} retrieveItem={setModalInfo} />
           <Modal 
             isModalOpen={modalOpen} 
             setModalState={setModalVisiblity} 
-            textTitle={TEXTS.SECTIONS.HOME.modal_title} 
             childrenBody={getMovieChildren()} 
           />
         </>

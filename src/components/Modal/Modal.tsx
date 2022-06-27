@@ -3,11 +3,11 @@ import { ReactNode } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import { Translation } from '../../languages/components/Translation';
 
 interface Props {
   isModalOpen: boolean;
   setModalState: Function;
-  textTitle: string;
   childrenBody: ReactNode;
 }
 
@@ -21,7 +21,7 @@ const ModalWrapper = (() => ({
   },
 }));
 
-export default function Modal({ isModalOpen, setModalState, textTitle, childrenBody }: Props) {
+export default function Modal({ isModalOpen, setModalState, childrenBody }: Props) {
 
   const handleClose = () => {
     setModalState(!isModalOpen);
@@ -33,7 +33,9 @@ export default function Modal({ isModalOpen, setModalState, textTitle, childrenB
       open={isModalOpen} 
       onClose={handleClose}
     >
-      <DialogTitle>{textTitle}</DialogTitle>
+      <DialogTitle>
+        <Translation>modal-title</Translation>
+      </DialogTitle>
       <DialogContent>
         {childrenBody}
       </DialogContent>

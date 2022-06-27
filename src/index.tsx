@@ -5,6 +5,8 @@ import { store } from './redux/store';
 
 import './styles/index.css';
 import App from './App';
+import { LanguageProvider } from './languages/LanguageProvider';
+import { fetchTranslations } from './languages/fetchTranslations';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,6 +14,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider store={store}>
-    <App />
+    <LanguageProvider fetchTranslations={fetchTranslations}>
+      <App />
+    </LanguageProvider>,
   </Provider>,
 );

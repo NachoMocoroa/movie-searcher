@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { MoviesData } from '../models/models';
-import { NAVIGATION, TEXTS } from '../constants/constants';
+import { NAVIGATION } from '../constants/constants';
 
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -11,6 +11,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import TopButton from '../components/TopButton/TopButton';
+import LanguageSelector from '../languages/components/LanguageSelector';
+import { Translation } from '../languages/components/Translation';
 
 const drawerWidth = 270;
 const headerHeight = '5rem';
@@ -180,7 +182,7 @@ export default function HeaderApp() {
     return param ? 'link_active' : '';
   };
   
-  const handleScroll = () => {
+  const handleScroll = (): void => {
     let posPageY = window.pageYOffset;
     setShowTopBtn(posPageY > headerOffset);
   };
@@ -196,17 +198,17 @@ export default function HeaderApp() {
     <ul className="navList">
       <li>
         <NavLink to={NAVIGATION.HOME.path} className={({ isActive }) => setIsActiveLink(isActive)}>
-          {NAVIGATION.HOME.text}
+          <Translation>navigation-home</Translation>
         </NavLink>
       </li>
       <li>
         <NavLink to={NAVIGATION.SEARCH.path} className={({ isActive }) => setIsActiveLink(isActive)}>
-          {NAVIGATION.SEARCH.text}
+          <Translation>navigation-search</Translation>
         </NavLink>
       </li>
       <li>
         <NavLink to={NAVIGATION.MY_LIST.path} className={({ isActive }) => setIsActiveLink(isActive)}>
-          {NAVIGATION.MY_LIST.text}
+          <Translation>navigation-list</Translation>
           {(moviesList && 
             <Box
               component="span"
@@ -227,7 +229,7 @@ export default function HeaderApp() {
       <Toolbar sx={ToolbarStyles}>
         <NavLink to={NAVIGATION.HOME.path}>
           <Typography variant="h1" noWrap component="h1" sx={LogoHeader}>
-            {TEXTS.LOGO.text}
+            <Translation>logo</Translation>
           </Typography>
         </NavLink>
         <IconButton 
@@ -264,6 +266,7 @@ export default function HeaderApp() {
           {drawer}
         </Drawer>
       </Box>
+      <LanguageSelector />
     </Box>
   );
 }

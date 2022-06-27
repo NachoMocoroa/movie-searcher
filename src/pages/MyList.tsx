@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { MovieList, MovieResult, MoviesData } from '../models/models';
-import { movieDefault, TEXTS } from '../constants/constants';
+import { movieDefault } from '../constants/constants';
 
 import Typography from '@mui/material/Typography';
 import MoviesList from '../components/MoviesList/MoviesList';
@@ -9,6 +9,7 @@ import ErrorCard from '../components/ErrorCard/ErrorCard';
 import Loading from '../components/Loading/Loading';
 import Modal from '../components/Modal/Modal';
 import MovieInfo from '../components/MovieInfo/MovieInfo';
+import { Translation } from '../languages/components/Translation';
 
 export default function MyList() {
   
@@ -46,13 +47,13 @@ export default function MyList() {
         align="center" 
         sx={{ color: '#FFFFFF', margin: '0 0 1rem 0' }}
       >
-        {TEXTS.SECTIONS.MY_LIST.title}
+        <Translation>header-list</Translation>
       </Typography>
       <Typography 
         align="center" 
         sx={{ color: '#FFFFFF', margin: '0 0 1em 0', fontSize: '1.6rem' }}
       >
-        {TEXTS.SECTIONS.MY_LIST.text}
+        <Translation>paragraph-list</Translation>
       </Typography>
       <div>
         {isLoading && <Loading />}
@@ -63,7 +64,6 @@ export default function MyList() {
             <Modal 
               isModalOpen={modalOpen} 
               setModalState={setModalVisiblity} 
-              textTitle="Movie info" 
               childrenBody={getMovieChildren()} 
             />
           </>

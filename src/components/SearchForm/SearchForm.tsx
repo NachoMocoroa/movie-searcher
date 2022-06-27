@@ -1,5 +1,4 @@
 import useForm from '../../hooks/useForm';
-import { TEXTS } from '../../constants/constants';
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -35,7 +34,6 @@ const FormSearch = (() => ({
 export default function SearchForm({ submitSearch }: Props) {
 
   const [formData, handleSearchInputChanges, reset] = useForm(initialForm);
-
   const { search } = formData;
 
   const callSubmit = (e: { preventDefault: () => void; }) => {
@@ -54,8 +52,7 @@ export default function SearchForm({ submitSearch }: Props) {
           sx={FormSearch} 
           id="search" 
           name="search" 
-          placeholder={TEXTS.FORMS.SEARCH.button}
-          inputProps={{ 'aria-label': `${TEXTS.FORMS.SEARCH.button}` }} 
+          inputProps={{ 'aria-label': 'search' }} 
           value={search}
           onChange={handleSearchInputChanges}
         />

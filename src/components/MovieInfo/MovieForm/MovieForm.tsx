@@ -1,10 +1,11 @@
 import useForm from '../../../hooks/useForm';
 import { MovieFormParams } from '../../../models/models';
-import { TEXTS } from '../../../constants/constants';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Translation } from '../../../languages/components/Translation';
 
 interface Props {
   deleteButton?: boolean;
@@ -27,6 +28,28 @@ const FieldssRow = (() => ({
   width: '100%',
   margin: '0 0 1rem 0',
   padding: '0',
+  '& .MuiTypography-root': {
+    color: '#666666', 
+    margin: '0 0 5px 0', 
+    fontSize: '1.25rem'
+  },
+}));
+
+const FieldColumn = (() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '0',
+  padding: '0',
+  width: '100%',
+}));
+
+const FieldColumnNumber = (() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '0',
+  padding: '0 1.5rem 0 0',
+  width: '100%',
+  maxWidth: '150px',
 }));
 
 const NumberFieldStyle = (() => ({
@@ -103,31 +126,39 @@ export default function MovieForm({ deleteButton, actionDelete, submitForm }: Pr
       sx={DisplayColumn}
     >
       <Box sx={FieldssRow}>
-        <TextField 
-          type="number" 
-          label={TEXTS.FORMS.MOVIE.punctuation}
-          id={punctuationValue} 
-          name={punctuationValue} 
-          InputProps={{
-            inputProps: { 
-              max: 5, min: 0 
-            }
-          }}
-          sx={NumberFieldStyle}
-          value={punctuation}
-          onChange={handleInputChange}
-        />
-        <TextField 
-          label="Comments"
-          id={commentsValue} 
-          name={commentsValue} 
-          multiline 
-          minRows={5}
-          maxRows={5} 
-          sx={TextareaStyle}
-          value={comments}
-          onChange={ handleInputChange }
-        />
+        <Box sx={FieldColumnNumber}>
+          <Typography>
+            <Translation>form-punctuation</Translation>
+          </Typography>
+          <TextField 
+            type="number" 
+            id={punctuationValue} 
+            name={punctuationValue} 
+            InputProps={{
+              inputProps: { 
+                max: 5, min: 0 
+              }
+            }}
+            sx={NumberFieldStyle}
+            value={punctuation}
+            onChange={handleInputChange}
+          />
+        </Box>
+        <Box sx={FieldColumn}>
+          <Typography>
+            <Translation>form-comments</Translation>
+          </Typography>
+          <TextField 
+            id={commentsValue} 
+            name={commentsValue} 
+            multiline 
+            minRows={5}
+            maxRows={5} 
+            sx={TextareaStyle}
+            value={comments}
+            onChange={ handleInputChange }
+          />
+        </Box>
       </Box>
       <Box sx={ButtonsRow} 
         style={{
@@ -138,14 +169,16 @@ export default function MovieForm({ deleteButton, actionDelete, submitForm }: Pr
           <Button 
             variant="outlined"
             onClick={(e) => onDelete(e)}
-          >{TEXTS.FORMS.MOVIE.delete}</Button>
+          >
+            <Translation>button-delete</Translation>
+          </Button>
         }
         <Button 
           type="submit" 
           variant="contained" 
           onClick={callSubmit} 
         >
-          {TEXTS.FORMS.MOVIE.submit}
+          <Translation>button-submit</Translation>
         </Button>
       </Box>
     </Box>

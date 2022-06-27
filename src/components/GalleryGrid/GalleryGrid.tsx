@@ -1,5 +1,4 @@
 import { MoviesInfoJSON, MovieResult, MoviesSearchJSON } from '../../models/models';
-import { TEXTS } from '../../constants/constants';
 
 import Grid from '@mui/material/Grid';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -63,8 +62,8 @@ export default function GalleryGrid({ data, retrieveItem }: Props) {
   const { results } = data;
 
   const dataMessage = {
-    title: TEXTS.NO_RESULTS.title,
-    text: TEXTS.NO_RESULTS.text
+    title: '',
+    text: ''
   };
 
   const getData = (item: MovieResult) => {

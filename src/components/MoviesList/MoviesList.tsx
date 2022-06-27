@@ -1,6 +1,5 @@
 import MessageCard from '../MessageCard/MessageCard';
 import { MovieResult } from '../../models/models';
-import { TEXTS } from '../../constants/constants';
 
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -8,6 +7,7 @@ import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
+import { Translation } from '../../languages/components/Translation';
 
 interface Props {
   data: any;
@@ -130,8 +130,8 @@ const InfoTextComment = (() => ({
 export default function MoviesList({ data, retrieveItem }: Props) {
 
   const dataMessage = {
-    title: TEXTS.NO_RESULTS.title,
-    text: TEXTS.NO_RESULTS.text
+    title: '',
+    text: ''
   };
 
   const getData = (item: MovieResult) => {
@@ -167,9 +167,24 @@ export default function MoviesList({ data, retrieveItem }: Props) {
                     {item.movie.title}
                   </Typography>
                   <Box sx={InfoText}>
-                    <Typography><span>{TEXTS.MOVIE.original_title}</span>{item.movie.original_title}</Typography>
-                    <Typography><span>{TEXTS.MOVIE.original_language}</span>{item.movie.original_language}</Typography>
-                    <Typography><span>{TEXTS.MOVIE.release_date}</span>{item.movie.release_date}</Typography>
+                    <Typography>
+                      <span>
+                        <Translation>info-original_title</Translation>
+                      </span>
+                      {item.movie.original_title}
+                    </Typography>
+                    <Typography>
+                      <span>
+                        <Translation>info-original_language</Translation>
+                      </span>
+                      {item.movie.original_language}
+                    </Typography>
+                    <Typography>
+                      <span>
+                        <Translation>info-release_date</Translation>
+                      </span>
+                      {item.movie.release_date}
+                    </Typography>
                   </Box>
                   <Box sx={InfoTextComment}>
                     <Typography>{item.comments}</Typography>

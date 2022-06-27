@@ -1,6 +1,7 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { Translation } from '../../languages/components/Translation';
 
 interface Props {
   data: string
@@ -43,7 +44,7 @@ export default function ErrorCard({ data }: Props) {
     <Card sx={ErrorCardItem}>
       <CardContent sx={ErrorCardWrapper}>
         <Typography sx={ErrorCardTitle} color="text.secondary" gutterBottom>
-          ERROR
+          <Translation>error-title</Translation>
         </Typography>
         <Typography sx={ErrorCardText} variant="body2">
           {data}

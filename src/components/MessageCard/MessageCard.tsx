@@ -3,6 +3,7 @@ import { Message } from '../../models/models';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { Translation } from '../../languages/components/Translation';
 
 interface Props {
   data: Message
@@ -47,10 +48,16 @@ export default function MessageCard({ data }: Props) {
     <Card sx={CardItem}>
       <CardContent sx={CardWrapper}>
         <Typography sx={CardTitle} color="text.secondary" gutterBottom>
-          {title}
+          {title.length === 0 ? (
+            <Translation>no-results-title</Translation>
+          ) : (title)
+          }
         </Typography>
         <Typography sx={CardText} variant="body2">
-          {text}
+          {text.length === 0 ? (
+            <Translation>no-results-text</Translation>
+          ) : (text)
+          }
         </Typography>
       </CardContent>
     </Card>
