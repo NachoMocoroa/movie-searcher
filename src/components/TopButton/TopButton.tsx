@@ -1,9 +1,6 @@
+import { useState, useEffect } from 'react';
 import IconButton from '@mui/material/IconButton';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-
-interface Props {
-  showTopBtn: boolean
-}
 
 const topButtonStyles = (() => ({
   position: 'fixed',
@@ -27,7 +24,11 @@ const topButtonStyles = (() => ({
   },
 }));
 
-export default function TopButton({ showTopBtn }: Props) {
+export default function TopButton() {
+
+  const scrollEvent = 'scroll';
+  const headerOffset = 150;
+  const [showTopBtn, setShowTopBtn] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -35,6 +36,18 @@ export default function TopButton({ showTopBtn }: Props) {
       behavior: 'smooth'
     });
   };
+
+  const handleScroll = (): void => {
+    let posPageY = window.pageYOffset;
+    setShowTopBtn(posPageY > headerOffset);
+  };
+
+  useEffect(()=> {
+    window.addEventListener(scrollEvent, handleScroll);
+    return(() => {
+      window.removeEventListener(scrollEvent, handleScroll);
+    });
+  });
 
   return (
     <IconButton 

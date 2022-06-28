@@ -1,9 +1,18 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { mainMarginTop } from './layoutConstants';
 
 import Fade from '@mui/material/Fade';
 import Box from '@mui/material/Box';
-import { MainBox } from './layoutStyles';
+
+const MainBox = (() => ({
+  width: '100%',
+  maxWidth: '100rem',
+  height: '100%',
+  minHeight: `calc(100vh - (${mainMarginTop} + 3rem))`,
+  margin: `${mainMarginTop} auto 3rem auto`,
+  padding: '0 2rem',
+}));
 
 interface Props {
   children: ReactNode;
