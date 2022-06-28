@@ -1,4 +1,4 @@
-export default {
+const langEs = {
     "logo": "BuscaPelis",
     "navigation-home": "Principal",
     "navigation-search": "Buscador",
@@ -25,3 +25,5 @@ export default {
     "info-vote_count": "Votos totales:",
     "info-overview": "Visión general:"
 }
+
+export default langEs;

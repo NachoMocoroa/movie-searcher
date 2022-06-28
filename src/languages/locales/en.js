@@ -1,4 +1,4 @@
-export default {
+const langEn = {
     "logo": "MovieSearcher",
     "navigation-home": "Home",
     "navigation-search": "Search",
@@ -25,3 +25,5 @@ export default {
     "info-vote_count": "Vote count:",
     "info-overview": "Overview:"
 }
+
+export default langEn;
