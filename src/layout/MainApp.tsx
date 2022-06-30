@@ -2,14 +2,12 @@ import { ReactNode, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { mainMarginTop } from './layoutConstants';
 
-import Fade from '@mui/material/Fade';
 import Box from '@mui/material/Box';
+import FadeWrapper from '../components/FadeWrapper/FadeWrapper';
 
 const MainBox = (() => ({
   width: '100%',
   maxWidth: '100rem',
-  height: '100%',
-  minHeight: `calc(100vh - (${mainMarginTop} + 3rem))`,
   margin: `${mainMarginTop} auto 3rem auto`,
   padding: '0 2rem',
 }));
@@ -28,17 +26,12 @@ export default function MainApp({ children }: Props) {
   }, [location, previousLocation]);
 
   return (
-    <Fade 
-      in={location === previousLocation} 
-      appear 
-      unmountOnExit 
-      timeout={2000} 
-    >
+    <FadeWrapper fadeEffect={location === previousLocation}>
       <Box
         component="main" 
-        sx={MainBox} 
-        aria-label="main"
+        aria-label="main" 
+        sx={MainBox}
       >{children}</Box>
-    </Fade>
+    </FadeWrapper>
   );
 }
