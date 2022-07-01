@@ -8,6 +8,7 @@ import {
   DisplayRow, 
   CardWrapper, 
   CardContentWrapper, 
+  CardImage, 
   CardTitle, 
   InfoText, 
   InfoTextComment 
@@ -103,7 +104,7 @@ export default function MovieInfo({ data, setModalState, canDelete }: Props) {
       <Box sx={CardContentWrapper}>
         <CardMedia
           component="img"
-          height="200"
+          sx={CardImage}
           image={getPoster()}
           alt={title}
         />

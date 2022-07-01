@@ -27,6 +27,18 @@ export const CardContentWrapper = (() => ({
     justifyContent: 'center',
     alignItems: 'flex-start',
     width: '100%',
+    '&:last-child': {
+        marginTop: '1rem',
+    },
+}));
+
+export const CardImage = (() => ({
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0',
+    padding: '0',
+    width: '100%',
+    maxWidth: '150px'
 }));
   
 export const CardTitle = (() => ({
