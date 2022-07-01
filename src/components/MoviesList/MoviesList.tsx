@@ -1,4 +1,4 @@
-import MessageCard from '../MessageCard/MessageCard';
+import MessageCard from '../Atoms/MessageCard/MessageCard';
 import { MovieResult } from '../../models/models';
 import { 
   GridWrapper, 
@@ -17,7 +17,7 @@ import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
-import InfoTextItem from '../InfoTextItem/InfoTextItem';
+import InfoTextItem from '../Atoms/InfoTextItem/InfoTextItem';
 
 interface Props {
   data: any;

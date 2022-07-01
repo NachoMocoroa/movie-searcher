@@ -7,9 +7,9 @@ import { movieDefault } from '../constants/constants';
 
 import Typography from '@mui/material/Typography';
 import GalleryGrid from '../components/GalleryGrid/GalleryGrid';
-import Loading from '../components/Loading/Loading';
-import ErrorCard from '../components/ErrorCard/ErrorCard';
-import Modal from '../components/Modal/Modal';
+import Loading from '../components/Atoms/Loading/Loading';
+import ErrorCard from '../components/Atoms/ErrorCard/ErrorCard';
+import Modal from '../components/Atoms/Modal/Modal';
 import MovieInfo from '../components/MovieInfo/MovieInfo';
 import { Translation } from '../languages/components/Translation';
 

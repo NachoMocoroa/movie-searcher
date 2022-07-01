@@ -4,7 +4,7 @@ import { GridWrapper, GridItem, LabelText } from './GalleryGridStyles';
 import Grid from '@mui/material/Grid';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import MessageCard from '../MessageCard/MessageCard';
+import MessageCard from '../Atoms/MessageCard/MessageCard';
 
 interface Props {
   data: MoviesInfoJSON | MoviesSearchJSON;

@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import { Translation } from '../../languages/components/Translation';
+import { Translation } from '../../../languages/components/Translation';
 
 const InfoTextItemStyles = (() => ({
   fontSize: '1.25rem',

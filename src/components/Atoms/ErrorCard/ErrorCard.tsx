@@ -1,7 +1,7 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Translation } from '../../languages/components/Translation';
+import { Translation } from '../../../languages/components/Translation';
 
 interface Props {
   data: string

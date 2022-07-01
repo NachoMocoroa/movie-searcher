@@ -9,7 +9,7 @@ import { NAVIGATION } from './constants/constants';
 import Container from '@mui/material/Container';
 import HeaderApp from './layout/HeaderApp';
 import MainApp from './layout/MainApp';
-import Loading from './components/Loading/Loading';
+import Loading from './components/Atoms/Loading/Loading';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Search = React.lazy(() => import('./pages/Search'));

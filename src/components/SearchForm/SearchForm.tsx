@@ -6,14 +6,6 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
-interface Props {
-  submitSearch: Function;
-}
-
-const initialForm: any = {
-  search: ''
-};
-
 const FormWrapper = (() => ({
   display: 'flex',
   justifyContent: 'center',
@@ -30,6 +22,14 @@ const FormSearch = (() => ({
   marginLeft: '1rem',
   fontSize: '1.5rem',
 }));
+
+interface Props {
+  submitSearch: Function;
+}
+
+const initialForm: any = {
+  search: ''
+};
 
 export default function SearchForm({ submitSearch }: Props) {
 

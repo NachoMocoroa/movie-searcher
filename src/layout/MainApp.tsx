@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { mainMarginTop } from './layoutConstants';
 
 import Box from '@mui/material/Box';
-import FadeWrapper from '../components/FadeWrapper/FadeWrapper';
+import FadeWrapper from '../components/Atoms/FadeWrapper/FadeWrapper';
 
 const MainBox = (() => ({
   width: '100%',

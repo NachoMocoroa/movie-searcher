@@ -20,7 +20,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import MovieForm from './MovieForm/MovieForm';
-import InfoTextItem from '../InfoTextItem/InfoTextItem';
+import InfoTextItem from '../Atoms/InfoTextItem/InfoTextItem';
 
 interface Props {
   data: MovieResult | any;

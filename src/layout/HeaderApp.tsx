@@ -2,7 +2,7 @@ import { headerHeight, headerBgColor } from './layoutConstants';
 
 import Box from '@mui/material/Box';
 import Navigation from './Navigation/Navigation';
-import TopButton from '../components/TopButton/TopButton';
+import TopButton from '../components/Atoms/TopButton/TopButton';
 import LanguageSelector from '../languages/components/LanguageSelector';
 
 const HeaderComponent = (() => ({

@@ -19,7 +19,7 @@ import MainApp from './layout/MainApp';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import MyList from './pages/MyList';
-import Loading from "./components/Loading/Loading";
+import Loading from "./components/Atoms/Loading/Loading";
 
 import { NAVIGATION } from './constants/constants';
 
