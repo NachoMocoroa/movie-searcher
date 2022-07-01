@@ -44,14 +44,6 @@ export const InfoText = (() => ({
     flexDirection: 'column',
     margin: '0.5rem 0',
     padding: '0 1rem',
-    '& .MuiTypography-root': {
-        fontSize: '1.25rem',
-        color: '#3333333',
-        '& span': {
-            marginRight: '0.5rem',
-            fontWeight: '700',
-        },
-    },
 }));
   
 export const InfoTextComment = (() => ({

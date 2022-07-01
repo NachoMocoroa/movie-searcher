@@ -17,7 +17,7 @@ import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
-import { Translation } from '../../languages/components/Translation';
+import InfoTextItem from '../InfoTextItem/InfoTextItem';
 
 interface Props {
   data: any;
@@ -36,7 +36,7 @@ export default function MoviesList({ data, retrieveItem }: Props) {
   };
 
   const getPoster = (poster_path: string) => {
-    const imgUrlPrefix = 'https://www.themoviedb.org/t/p/w220_and_h330_face/';
+    const imgUrlPrefix = `${process.env.REACT_APP_IMAGES_URL}`;
     return poster_path ? `${imgUrlPrefix}${poster_path}` : './images/no-image.png';
   };
 
@@ -64,27 +64,12 @@ export default function MoviesList({ data, retrieveItem }: Props) {
                     {item.movie.title}
                   </Typography>
                   <Box sx={InfoText}>
-                    <Typography>
-                      <span>
-                        <Translation>info-original_title</Translation>
-                      </span>
-                      {item.movie.original_title}
-                    </Typography>
-                    <Typography>
-                      <span>
-                        <Translation>info-original_language</Translation>
-                      </span>
-                      {item.movie.original_language}
-                    </Typography>
-                    <Typography>
-                      <span>
-                        <Translation>info-release_date</Translation>
-                      </span>
-                      {item.movie.release_date}
-                    </Typography>
+                    <InfoTextItem translation="info-original_title" data={item.movie.original_title} />
+                    <InfoTextItem translation="info-original_language" data={item.movie.original_language} />
+                    <InfoTextItem translation="info-release_date" data={item.movie.release_date} />
                   </Box>
                   <Box sx={InfoTextComment}>
-                    <Typography>{item.comments}</Typography>
+                    <InfoTextItem data={item.comments} />
                   </Box>
                 </CardContent>
                 <Box sx={CornerItem}>

@@ -19,7 +19,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import MovieForm from './MovieForm/MovieForm';
-import { Translation } from '../../languages/components/Translation';
+import InfoTextItem from '../InfoTextItem/InfoTextItem';
 
 interface Props {
   data: MovieResult | any;
@@ -45,7 +45,7 @@ export default function MovieInfo({ data, setModalState, canDelete }: Props) {
   const dispatch: AppDispatch = useDispatch();
 
   const getPoster = () => {
-    const imgUrlPrefix = 'https://www.themoviedb.org/t/p/w220_and_h330_face/';
+    const imgUrlPrefix = `${process.env.REACT_APP_IMAGES_URL}`;
     return poster_path ? `${imgUrlPrefix}${poster_path}` : './images/no-image.png';
   };
 
@@ -113,48 +113,18 @@ export default function MovieInfo({ data, setModalState, canDelete }: Props) {
           </Typography>
           <Box sx={DisplayRow}>
             <Box sx={InfoText}>
-              <Typography>
-                <span>
-                  <Translation>info-original_title</Translation>
-                </span>
-                {original_title}
-              </Typography>
-              <Typography>
-                <span>
-                  <Translation>info-original_language</Translation>
-                </span>
-                {original_language}
-              </Typography>
-              <Typography>
-                <span>
-                  <Translation>info-release_date</Translation>
-                </span>
-                {release_date}
-              </Typography>
+              <InfoTextItem translation="info-original_title" data={original_title} />
+              <InfoTextItem translation="info-original_language" data={original_language} />
+              <InfoTextItem translation="info-release_date" data={release_date} />
             </Box>
             <Box sx={InfoText}>
-              <Typography>
-                <span>
-                  <Translation>info-popularity</Translation>
-                </span>
-                {popularity}
-              </Typography>
-              <Typography>
-                <span>
-                  <Translation>info-vote_average</Translation>
-                </span>
-                {vote_average}
-              </Typography>
-              <Typography>
-                <span>
-                  <Translation>info-vote_count</Translation>
-                </span>
-                {vote_count}
-              </Typography>
+              <InfoTextItem translation="info-popularity" data={popularity} />
+              <InfoTextItem translation="info-vote_average" data={vote_average} />
+              <InfoTextItem translation="info-vote_count" data={vote_count} />
             </Box>
           </Box>
           <Box sx={InfoTextComment}>
-            <Typography>{overview}</Typography>
+            <InfoTextItem data={overview} />
           </Box>
         </CardContent>
       </Box>

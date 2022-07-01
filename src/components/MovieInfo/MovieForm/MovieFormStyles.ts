@@ -36,15 +36,15 @@ export const FieldColumnNumber = (() => ({
     width: '100%',
     maxWidth: '150px',
 }));
-  
+
 export const NumberFieldStyle = (() => ({
     width: '100%',
-    maxWidth: '100px',
+    maxWidth: '60px',
     '& .MuiInputBase-root': {
         '& input': {
-            padding: '1.5rem 10px 1.5rem 1rem',
+            padding: '1rem',
             textAlign: 'center',
-            fontSize: '1.15rem',
+            fontSize: '1.5rem',
         },
         '& .MuiOutlinedInput-notchedOutline': {
             '& legend': {
@@ -62,8 +62,8 @@ export const TextareaStyle = (() => ({
         padding: '0',
         '& textarea': {
             width: '100%',
-            padding: '1.5rem 10px 1.5rem 1rem',
-            fontSize: '1.15rem',
+            padding: '1rem',
+            fontSize: '1.5rem',
         },
     },
 }));
