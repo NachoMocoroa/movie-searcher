@@ -1,8 +1,10 @@
+import { BaseSyntheticEvent, useState } from 'react';
 import useForm from '../../../hooks/useForm';
 import { MovieFormParams } from '../../../models/models';
 import { 
   DisplayColumn, 
   FieldssRow, 
+  FieldError, 
   FieldColumn, 
   FieldColumnNumber, 
   NumberFieldStyle, 
@@ -33,11 +35,40 @@ const commentsValue = 'comments';
 export default function MovieForm({ deleteButton, actionDelete, submitForm }: Props) {
 
   const [formData, handleInputChange, reset] = useForm(initialForm);
+  const [showError, setShowError] = useState<boolean>(false);
+  const [errorPunctuation, setErrorPunctuation] = useState<boolean>(false);
+  const [errorComments, setErrorComments] = useState<boolean>(false);
 
   const { punctuation, comments } = formData;
 
-  const callSubmit = (e: { preventDefault: () => void; }) => {
+  const errorMessageNode = (): React.ReactNode => <Translation>error-field-required</Translation>;
+
+  const checkError = (name: string, value: any) => {
+    setShowError(false);
+    if (name === punctuationValue) {
+      value.length === 0 ? setErrorPunctuation(true) : setErrorPunctuation(false);
+    } else if (name === commentsValue) {
+      value.length === 0 ? setErrorComments(true) : setErrorComments(false);
+    }
+  };
+
+  const checkValue = (e: BaseSyntheticEvent) => {
+    checkError(e.target.name, e.target.value);
+    handleInputChange(e);
+  };
+
+  const checkForm = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
+    const valuesEmpty = Object.values(formData).includes('');
+    if (!valuesEmpty) {
+      callSubmit();
+      setShowError(false);
+    } else {
+      setShowError(true);
+    }
+  };
+
+  const callSubmit = () => {
     submitForm(formData);
     reset();
   };
@@ -67,8 +98,12 @@ export default function MovieForm({ deleteButton, actionDelete, submitForm }: Pr
               }
             }}
             sx={NumberFieldStyle}
-            value={punctuation}
-            onChange={handleInputChange}
+            value={punctuation} 
+            error={errorPunctuation} 
+            helperText={
+              errorPunctuation && errorMessageNode()
+            } 
+            onChange={checkValue}
           />
         </Box>
         <Box sx={FieldColumn}>
@@ -82,10 +117,24 @@ export default function MovieForm({ deleteButton, actionDelete, submitForm }: Pr
             minRows={5}
             maxRows={5} 
             sx={TextareaStyle}
-            value={comments}
-            onChange={ handleInputChange }
+            value={comments} 
+            error={errorComments} 
+            helperText={
+              errorComments && errorMessageNode()
+            } 
+            onChange={checkValue}
           />
         </Box>
+      </Box>
+      <Box 
+        sx={FieldError}
+        style={{
+          display: showError ? 'flex' : 'none'
+        }}
+      >
+        <Typography>
+          <Translation>error-empty-fields</Translation>
+        </Typography>
       </Box>
       <Box sx={ButtonsRow} 
         style={{
@@ -103,7 +152,7 @@ export default function MovieForm({ deleteButton, actionDelete, submitForm }: Pr
         <Button 
           type="submit" 
           variant="contained" 
-          onClick={callSubmit} 
+          onClick={checkForm} 
         >
           <Translation>button-submit</Translation>
         </Button>

@@ -20,6 +20,20 @@ export const FieldssRow = (() => ({
     },
 }));
   
+export const FieldError = (() => ({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    width: '100%',
+    margin: '0 0 1rem 0',
+    padding: '0',
+    '& .MuiTypography-root': {
+        color: '#FF0000', 
+        margin: '0 0 5px 0', 
+        fontSize: '1.25rem'
+    },
+}));
+  
 export const FieldColumn = (() => ({
     display: 'flex',
     flexDirection: 'column',
@@ -35,11 +49,14 @@ export const FieldColumnNumber = (() => ({
     padding: '0 1.5rem 0 0',
     width: '100%',
     maxWidth: '150px',
+    '& .MuiFormHelperText-root': {
+        fontSize: '1rem',
+    },
 }));
 
 export const NumberFieldStyle = (() => ({
     width: '100%',
-    maxWidth: '60px',
+    maxWidth: '90px',
     '& .MuiInputBase-root': {
         '& input': {
             padding: '1rem',
@@ -51,6 +68,11 @@ export const NumberFieldStyle = (() => ({
                 fontSize: '1.5rem',
             },
         },
+    },
+    '& .MuiFormHelperText-root': {
+        fontSize: '1rem',
+        marginLeft: '0',
+        marginRight: '0',
     },
 }));
   
@@ -65,6 +87,11 @@ export const TextareaStyle = (() => ({
             padding: '1rem',
             fontSize: '1.5rem',
         },
+    },
+    '& .MuiFormHelperText-root': {
+        fontSize: '1rem',
+        marginLeft: '0',
+        marginRight: '0',
     },
 }));
   
